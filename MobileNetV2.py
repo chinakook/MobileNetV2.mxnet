@@ -8,45 +8,48 @@ def ConvBlock(channels, kernel_size, strides):
     out = nn.HybridSequential()
     out.add(
         nn.Conv2D(channels, kernel_size, strides=strides, padding=1, use_bias=False),
-        nn.BatchNorm(),
+        nn.BatchNorm(scale=True),
         nn.Activation('relu')
     )
     return out
 
-def Conv1x1(channels):
+def Conv1x1(channels, is_linear=False):
     out = nn.HybridSequential()
     out.add(
         nn.Conv2D(channels, 1, padding=0, use_bias=False),
-        nn.BatchNorm(),
-        nn.Activation('relu')
+        nn.BatchNorm(scale=True)
     )
+    if not is_linear:
+        out.add(nn.Activation('relu'))
     return out
 
 def DWise(channels, stride):
     out = nn.HybridSequential()
     out.add(
         nn.Conv2D(channels, 3, strides=stride, padding=1, groups=channels, use_bias=False),
-        nn.BatchNorm(),
+        nn.BatchNorm(scale=True),
         nn.Activation('relu')
     )
     return out
 
 class InvertedResidual(nn.HybridBlock):
-    def __init__(self, t, c, s, same_shape=True, **kwargs):
+    def __init__(self, t, e, c, s, same_shape=True, **kwargs):
         super(InvertedResidual, self).__init__(**kwargs)
         self.same_shape = same_shape
         self.stride = s
         with self.name_scope(): 
             self.bottleneck = nn.HybridSequential()
             self.bottleneck.add(
-                Conv1x1(c*t),
-                DWise(c*t, self.stride),
-                Conv1x1(c)
+                Conv1x1(e*t),
+                DWise(e*t, self.stride),
+                Conv1x1(c, is_linear=True)
             )
             if self.stride == 1 and not self.same_shape:
                 self.conv_res = Conv1x1(c)
     def hybrid_forward(self, F, x):
         out = self.bottleneck(x)
+        #if self.stride == 1 and self.same_shape:
+        #    out = F.elemwise_add(out, x)
         if self.stride == 1:
             if not self.same_shape:
                 x = self.conv_res(x)
@@ -58,59 +61,31 @@ class MobilenetV2(nn.HybridBlock):
         super(MobilenetV2, self).__init__(**kwargs)
         
         self.w = width_mult
+        
+        self.cn = [int(x*self.w) for x in [32, 16, 24, 32, 64, 96, 160, 320]]
+        
+        def InvertedResidualSequence(t, cn_id, n, s):
+            seq = nn.HybridSequential()
+            seq.add(InvertedResidual(t, self.cn[cn_id-1], self.cn[cn_id], s, same_shape=False))
+            for _ in range(n-1):
+                seq.add(InvertedResidual(t, self.cn[cn_id-1], self.cn[cn_id], 1))
+            return seq
+        
+        self.b0 = ConvBlock(self.cn[0], 3, 2)
+        self.b1 = InvertedResidualSequence(1, 1, 1, 1)
+        self.b2 = InvertedResidualSequence(6, 2, 2, 2)
+        self.b3 = InvertedResidualSequence(6, 3, 3, 2)
+        self.b4 = InvertedResidualSequence(6, 4, 4, 1)
+        self.b5 = InvertedResidualSequence(6, 5, 3, 2)
+        self.b6 = InvertedResidualSequence(6, 6, 3, 2)
+        self.b7 = InvertedResidualSequence(6, 7, 1, 1)
 
-        self.b0 = ConvBlock(int(32*self.w), 3, 2)
-
-        self.b1 = nn.HybridSequential()
-        self.b1.add(
-            InvertedResidual(1, int(16*self.w), 1, same_shape=False)
-        )
-
-        self.b2 = nn.HybridSequential()
-        self.b2.add(
-            InvertedResidual(6, int(24*self.w), 2),
-            InvertedResidual(6, int(24*self.w), 2)
-        )
-
-        self.b3 = nn.HybridSequential()
-        self.b3.add(
-            InvertedResidual(6, int(32*self.w), 2),
-            InvertedResidual(6, int(32*self.w), 2),
-            InvertedResidual(6, int(32*self.w), 2),
-        )
-
-        self.b4 = nn.HybridSequential()
-        self.b4.add(
-            InvertedResidual(6, int(64*self.w), 1, same_shape=False),
-            InvertedResidual(6, int(64*self.w), 1),
-            InvertedResidual(6, int(64*self.w), 1),
-            InvertedResidual(6, int(64*self.w), 1)
-        )
-
-        self.b5 = nn.HybridSequential()
-        self.b5.add(
-            InvertedResidual(6, int(96*self.w), 1, same_shape=False),
-            InvertedResidual(6, int(96*self.w), 1),
-            InvertedResidual(6, int(96*self.w), 1)
-        )
-
-        self.b6 = nn.HybridSequential()
-        self.b6.add(
-            InvertedResidual(6, int(160*self.w), 2),
-            InvertedResidual(6, int(160*self.w), 2),
-            InvertedResidual(6, int(160*self.w), 2)
-        )
-
-        self.b7 = nn.HybridSequential()
-        self.b7.add(
-            InvertedResidual(6, int(320*self.w), 1, same_shape=False)
-        )
-
+        self.last_channels = int(1280*self.w) if self.w > 1.0 else 1280
         with self.name_scope():
             self.features = nn.HybridSequential()
             with self.features.name_scope():
                 self.features.add(self.b0, self.b1, self.b2, self.b3, self.b4, self.b5, self.b6, self.b7)
-                self.features.add(Conv1x1(int(1280*self.w)))
+                self.features.add(Conv1x1(self.last_channels))
                 self.features.add(nn.GlobalAvgPool2D())
                 self.features.add(nn.Flatten())
             self.output = nn.Dense(num_classes)
@@ -127,4 +102,3 @@ sym = net(data)
 
 # plot network graph
 mx.viz.plot_network(sym,shape={'data':(8,3,224,224)}, node_attrs={'shape':'oval','fixedsize':'fasl==false'}).view()
-
