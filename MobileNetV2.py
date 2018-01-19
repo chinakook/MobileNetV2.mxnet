@@ -68,13 +68,13 @@ class MobilenetV2(nn.HybridBlock):
 
         self.b2 = nn.HybridSequential()
         self.b2.add(
-            InvertedResidual(6, int(24*self.w), 2, same_shape=False),
+            InvertedResidual(6, int(24*self.w), 2),
             InvertedResidual(6, int(24*self.w), 2)
         )
 
         self.b3 = nn.HybridSequential()
         self.b3.add(
-            InvertedResidual(6, int(32*self.w), 2, same_shape=False),
+            InvertedResidual(6, int(32*self.w), 2),
             InvertedResidual(6, int(32*self.w), 2),
             InvertedResidual(6, int(32*self.w), 2),
         )
@@ -96,7 +96,7 @@ class MobilenetV2(nn.HybridBlock):
 
         self.b6 = nn.HybridSequential()
         self.b6.add(
-            InvertedResidual(6, int(160*self.w), 2, same_shape=False),
+            InvertedResidual(6, int(160*self.w), 2),
             InvertedResidual(6, int(160*self.w), 2),
             InvertedResidual(6, int(160*self.w), 2)
         )
