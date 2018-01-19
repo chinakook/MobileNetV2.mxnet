@@ -43,7 +43,7 @@ class InvertedResidual(nn.HybridBlock):
                 DWise(c*t, self.stride),
                 Conv1x1(c)
             )
-            if not self.same_shape:
+            if self.stride == 1 and not self.same_shape:
                 self.conv_res = Conv1x1(c)
     def hybrid_forward(self, F, x):
         out = self.bottleneck(x)
