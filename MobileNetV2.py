@@ -75,8 +75,8 @@ class MobilenetV2(nn.HybridBlock):
         self.b1 = InvertedResidualSequence(1, 1, 1, 1)
         self.b2 = InvertedResidualSequence(6, 2, 2, 2)
         self.b3 = InvertedResidualSequence(6, 3, 3, 2)
-        self.b4 = InvertedResidualSequence(6, 4, 4, 1)
-        self.b5 = InvertedResidualSequence(6, 5, 3, 2)
+        self.b4 = InvertedResidualSequence(6, 4, 4, 2)
+        self.b5 = InvertedResidualSequence(6, 5, 3, 1)
         self.b6 = InvertedResidualSequence(6, 6, 3, 2)
         self.b7 = InvertedResidualSequence(6, 7, 1, 1)
 
