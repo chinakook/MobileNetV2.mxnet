@@ -59,9 +59,11 @@ class InvertedResidual(nn.HybridBlock):
 def InvertedResidualSequence(t, inp, oup, repeats, first_strides):
     seq = nn.HybridSequential()
     seq.add(InvertedResidual(inp, oup, t, first_strides, same_shape=False))
+    curr_inp = oup
     for _ in range(1, repeats):
-        seq.add(InvertedResidual(inp, oup, t, 1))
-    return seq, oup
+        seq.add(InvertedResidual(curr_inp, oup, t, 1))
+        curr_inp = oup
+    return seq
 
 class MobilenetV2(nn.HybridBlock):
     def __init__(self, num_classes=1000, width_mult=1.0, **kwargs):
@@ -87,8 +89,8 @@ class MobilenetV2(nn.HybridBlock):
             self.features.add(ConvBlock(self.first_oup, 3, 2))
             inp = self.first_oup
             for t, c, n, s in self.interverted_residual_setting:
-                irs, oup = InvertedResidualSequence(t, inp, c * self.w, n, s)
-                self.features.add(irs)
+                oup = c * self.w
+                self.features.add(InvertedResidualSequence(t, inp, oup, n, s))
                 inp = oup
 
             self.features.add(Conv1x1(self.last_channels))
@@ -107,4 +109,5 @@ data =mx.sym.var('data')
 sym = net(data)
 
 # plot network graph
+#mx.viz.print_summary(sym, shape={'data':(8,3,224,224)})
 mx.viz.plot_network(sym,shape={'data':(8,3,224,224)}, node_attrs={'shape':'oval','fixedsize':'fasl==false'}).view()
