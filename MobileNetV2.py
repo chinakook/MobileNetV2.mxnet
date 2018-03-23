@@ -102,7 +102,7 @@ class MobilenetV2(nn.HybridBlock):
         x = self.output(x)
         return x
 
-net = MobilenetV2(1000,1)
+net = MobilenetV2(1000,1, prefix="")
 
 # save as symbol
 data =mx.sym.var('data')
@@ -110,4 +110,6 @@ sym = net(data)
 
 # plot network graph
 #mx.viz.print_summary(sym, shape={'data':(8,3,224,224)})
-mx.viz.plot_network(sym,shape={'data':(8,3,224,224)}, node_attrs={'shape':'oval','fixedsize':'fasl==false'}).view()
+#mx.viz.plot_network(sym,shape={'data':(8,3,224,224)}, node_attrs={'shape':'oval','fixedsize':'fasl==false'}).view()
+
+
