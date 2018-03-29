@@ -12,3 +12,7 @@ The top-1/5 accuracy rates by using single center crop (crop size: 224x224, imag
 Network|Top-1|Top-5|
 :---:|:---:|:---:|
 MobileNet v2| 71.90| 90.49
+
+### Normalization
+
+The input images are substrated by mean RGB = [ 123.68, 116.78, 103.94 ], and then multiplied by 0.017.
