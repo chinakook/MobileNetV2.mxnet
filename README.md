@@ -13,7 +13,7 @@ Network|Top-1|Top-5|
 MobileNet v2| **72.45**| 90.78
 
 ### Tranning Script
-For tranning, please refer to [this repo](https://github.com/liangfu/mxnet-mobilenet-v2). Our pretrained model is converted from that.
+For tranning, please refer to [liangfu/mxnet-mobilenet-v2](https://github.com/liangfu/mxnet-mobilenet-v2). Our pretrained model is converted from that.
 
 ### Normalization
 
