@@ -4,16 +4,16 @@ This is a Gluon implementation of MobileNetV2 architecture as described in the p
 
 ### Pretrained Models on ImageNet
 
-We provide pretrained MobileNet models on ImageNet, which achieve slightly better accuracy rates than the original ones reported in the paper. 
+We provide pretrained MobileNetV2(width_mult: 1.0, crop_size: 224) models on ImageNet, which achieve slightly better accuracy rates than the original ones reported in the paper. 
 
 The top-1/5 accuracy rates by using single center crop (crop size: 224x224, image size: 256xN):
 
 Network|Top-1|Top-5|
 :---:|:---:|:---:|
-MobileNet v2| 72.45| 90.78
+MobileNet v2| **72.45**| 90.78
 
 ### Tranning Script
-For tranning, please refer to [this repo](https://github.com/liangfu/mxnet-mobilenet-v2).Our pretrained model is converted from that.
+For tranning, please refer to [this repo](https://github.com/liangfu/mxnet-mobilenet-v2). Our pretrained model is converted from that.
 
 ### Normalization
 
