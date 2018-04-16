@@ -7,18 +7,18 @@
     }, 
     {
       "op": "null", 
-      "name": "conv0_weight", 
+      "name": "stage0_conv0_weight", 
       "attrs": {
         "__dtype__": "0", 
         "__lr_mult__": "1.0", 
-        "__shape__": "(32, 0, 3, 3)", 
+        "__shape__": "(32L, 0L, 3L, 3L)", 
         "__wd_mult__": "1.0"
       }, 
       "inputs": []
     }, 
     {
       "op": "Convolution", 
-      "name": "conv0_fwd", 
+      "name": "stage0_conv0_fwd", 
       "attrs": {
         "dilate": "(1, 1)", 
         "kernel": "(3, 3)", 
@@ -33,7 +33,7 @@
     }, 
     {
       "op": "null", 
-      "name": "batchnorm0_gamma", 
+      "name": "stage0_batchnorm0_gamma", 
       "attrs": {
         "__dtype__": "0", 
         "__init__": "ones", 
@@ -45,7 +45,7 @@
     }, 
     {
       "op": "null", 
-      "name": "batchnorm0_beta", 
+      "name": "stage0_batchnorm0_beta", 
       "attrs": {
         "__dtype__": "0", 
         "__init__": "zeros", 
@@ -57,7 +57,7 @@
     }, 
     {
       "op": "null", 
-      "name": "batchnorm0_running_mean", 
+      "name": "stage0_batchnorm0_running_mean", 
       "attrs": {
         "__dtype__": "0", 
         "__init__": "zeros", 
@@ -69,7 +69,7 @@
     }, 
     {
       "op": "null", 
-      "name": "batchnorm0_running_var", 
+      "name": "stage0_batchnorm0_running_var", 
       "attrs": {
         "__dtype__": "0", 
         "__init__": "ones", 
@@ -81,7 +81,7 @@
     }, 
     {
       "op": "BatchNorm", 
-      "name": "batchnorm0_fwd", 
+      "name": "stage0_batchnorm0_fwd", 
       "attrs": {
         "axis": "1", 
         "eps": "1e-05", 
@@ -92,25 +92,28 @@
       "inputs": [[2, 0, 0], [3, 0, 0], [4, 0, 0], [5, 0, 1], [6, 0, 1]]
     }, 
     {
-      "op": "Activation", 
-      "name": "relu0_fwd", 
-      "attrs": {"act_type": "relu"}, 
+      "op": "clip", 
+      "name": "stage0_relu6_fwd", 
+      "attrs": {
+        "a_max": "6", 
+        "a_min": "0"
+      }, 
       "inputs": [[7, 0, 0]]
     }, 
     {
       "op": "null", 
-      "name": "invertedresidual0_conv0_weight", 
+      "name": "stage0_expandedconv0_expand_conv0_weight", 
       "attrs": {
         "__dtype__": "0", 
         "__lr_mult__": "1.0", 
-        "__shape__": "(32, 0, 1, 1)", 
+        "__shape__": "(32L, 0L, 1L, 1L)", 
         "__wd_mult__": "1.0"
       }, 
       "inputs": []
     }, 
     {
       "op": "Convolution", 
-      "name": "invertedresidual0_conv0_fwd", 
+      "name": "stage0_expandedconv0_expand_conv0_fwd", 
       "attrs": {
         "dilate": "(1, 1)", 
         "kernel": "(1, 1)", 
@@ -125,7 +128,7 @@
     }, 
     {
       "op": "null", 
-      "name": "invertedresidual0_batchnorm0_gamma", 
+      "name": "stage0_expandedconv0_expand_batchnorm0_gamma", 
       "attrs": {
         "__dtype__": "0", 
         "__init__": "ones", 
@@ -137,7 +140,7 @@
     }, 
     {
       "op": "null", 
-      "name": "invertedresidual0_batchnorm0_beta", 
+      "name": "stage0_expandedconv0_expand_batchnorm0_beta", 
       "attrs": {
         "__dtype__": "0", 
         "__init__": "zeros", 
@@ -149,7 +152,7 @@
     }, 
     {
       "op": "null", 
-      "name": "invertedresidual0_batchnorm0_running_mean", 
+      "name": "stage0_expandedconv0_expand_batchnorm0_running_mean", 
       "attrs": {
         "__dtype__": "0", 
         "__init__": "zeros", 
@@ -161,7 +164,7 @@
     }, 
     {
       "op": "null", 
-      "name": "invertedresidual0_batchnorm0_running_var", 
+      "name": "stage0_expandedconv0_expand_batchnorm0_running_var", 
       "attrs": {
         "__dtype__": "0", 
         "__init__": "ones", 
@@ -173,7 +176,7 @@
     }, 
     {
       "op": "BatchNorm", 
-      "name": "invertedresidual0_batchnorm0_fwd", 
+      "name": "stage0_expandedconv0_expand_batchnorm0_fwd", 
       "attrs": {
         "axis": "1", 
         "eps": "1e-05", 
@@ -184,25 +187,28 @@
       "inputs": [[10, 0, 0], [11, 0, 0], [12, 0, 0], [13, 0, 1], [14, 0, 1]]
     }, 
     {
-      "op": "Activation", 
-      "name": "invertedresidual0_relu0_fwd", 
-      "attrs": {"act_type": "relu"}, 
+      "op": "clip", 
+      "name": "stage0_expandedconv0_expand_relu6_fwd", 
+      "attrs": {
+        "a_max": "6", 
+        "a_min": "0"
+      }, 
       "inputs": [[15, 0, 0]]
     }, 
     {
       "op": "null", 
-      "name": "invertedresidual0_conv1_weight", 
+      "name": "stage0_expandedconv0_dwise_conv0_weight", 
       "attrs": {
         "__dtype__": "0", 
         "__lr_mult__": "1.0", 
-        "__shape__": "(32, 0, 3, 3)", 
+        "__shape__": "(32L, 0L, 3L, 3L)", 
         "__wd_mult__": "1.0"
       }, 
       "inputs": []
     }, 
     {
       "op": "Convolution", 
-      "name": "invertedresidual0_conv1_fwd", 
+      "name": "stage0_expandedconv0_dwise_conv0_fwd", 
       "attrs": {
         "dilate": "(1, 1)", 
         "kernel": "(3, 3)", 
@@ -217,7 +223,7 @@
     }, 
     {
       "op": "null", 
-      "name": "invertedresidual0_batchnorm1_gamma", 
+      "name": "stage0_expandedconv0_dwise_batchnorm0_gamma", 
       "attrs": {
         "__dtype__": "0", 
         "__init__": "ones", 
@@ -229,7 +235,7 @@
     }, 
     {
       "op": "null", 
-      "name": "invertedresidual0_batchnorm1_beta", 
+      "name": "stage0_expandedconv0_dwise_batchnorm0_beta", 
       "attrs": {
         "__dtype__": "0", 
         "__init__": "zeros", 
@@ -241,7 +247,7 @@
     }, 
     {
       "op": "null", 
-      "name": "invertedresidual0_batchnorm1_running_mean", 
+      "name": "stage0_expandedconv0_dwise_batchnorm0_running_mean", 
       "attrs": {
         "__dtype__": "0", 
         "__init__": "zeros", 
@@ -253,7 +259,7 @@
     }, 
     {
       "op": "null", 
-      "name": "invertedresidual0_batchnorm1_running_var", 
+      "name": "stage0_expandedconv0_dwise_batchnorm0_running_var", 
       "attrs": {
         "__dtype__": "0", 
         "__init__": "ones", 
@@ -265,7 +271,7 @@
     }, 
     {
       "op": "BatchNorm", 
-      "name": "invertedresidual0_batchnorm1_fwd", 
+      "name": "stage0_expandedconv0_dwise_batchnorm0_fwd", 
       "attrs": {
         "axis": "1", 
         "eps": "1e-05", 
@@ -276,25 +282,28 @@
       "inputs": [[18, 0, 0], [19, 0, 0], [20, 0, 0], [21, 0, 1], [22, 0, 1]]
     }, 
     {
-      "op": "Activation", 
-      "name": "invertedresidual0_relu1_fwd", 
-      "attrs": {"act_type": "relu"}, 
+      "op": "clip", 
+      "name": "stage0_expandedconv0_dwise_relu6_fwd", 
+      "attrs": {
+        "a_max": "6", 
+        "a_min": "0"
+      }, 
       "inputs": [[23, 0, 0]]
     }, 
     {
       "op": "null", 
-      "name": "invertedresidual0_conv2_weight", 
+      "name": "stage0_expandedconv0_linear_conv0_weight", 
       "attrs": {
         "__dtype__": "0", 
         "__lr_mult__": "1.0", 
-        "__shape__": "(16, 0, 1, 1)", 
+        "__shape__": "(16L, 0L, 1L, 1L)", 
         "__wd_mult__": "1.0"
       }, 
       "inputs": []
     }, 
     {
       "op": "Convolution", 
-      "name": "invertedresidual0_conv2_fwd", 
+      "name": "stage0_expandedconv0_linear_conv0_fwd", 
       "attrs": {
         "dilate": "(1, 1)", 
         "kernel": "(1, 1)", 
@@ -309,7 +318,7 @@
     }, 
     {
       "op": "null", 
-      "name": "invertedresidual0_batchnorm2_gamma", 
+      "name": "stage0_expandedconv0_linear_batchnorm0_gamma", 
       "attrs": {
         "__dtype__": "0", 
         "__init__": "ones", 
@@ -321,7 +330,7 @@
     }, 
     {
       "op": "null", 
-      "name": "invertedresidual0_batchnorm2_beta", 
+      "name": "stage0_expandedconv0_linear_batchnorm0_beta", 
       "attrs": {
         "__dtype__": "0", 
         "__init__": "zeros", 
@@ -333,7 +342,7 @@
     }, 
     {
       "op": "null", 
-      "name": "invertedresidual0_batchnorm2_running_mean", 
+      "name": "stage0_expandedconv0_linear_batchnorm0_running_mean", 
       "attrs": {
         "__dtype__": "0", 
         "__init__": "zeros", 
@@ -345,7 +354,7 @@
     }, 
     {
       "op": "null", 
-      "name": "invertedresidual0_batchnorm2_running_var", 
+      "name": "stage0_expandedconv0_linear_batchnorm0_running_var", 
       "attrs": {
         "__dtype__": "0", 
         "__init__": "ones", 
@@ -357,7 +366,7 @@
     }, 
     {
       "op": "BatchNorm", 
-      "name": "invertedresidual0_batchnorm2_fwd", 
+      "name": "stage0_expandedconv0_linear_batchnorm0_fwd", 
       "attrs": {
         "axis": "1", 
         "eps": "1e-05", 
@@ -369,18 +378,18 @@
     }, 
     {
       "op": "null", 
-      "name": "invertedresidual1_conv0_weight", 
+      "name": "stage1_expandedconv0_expand_conv0_weight", 
       "attrs": {
         "__dtype__": "0", 
         "__lr_mult__": "1.0", 
-        "__shape__": "(96, 0, 1, 1)", 
+        "__shape__": "(96L, 0L, 1L, 1L)", 
         "__wd_mult__": "1.0"
       }, 
       "inputs": []
     }, 
     {
       "op": "Convolution", 
-      "name": "invertedresidual1_conv0_fwd", 
+      "name": "stage1_expandedconv0_expand_conv0_fwd", 
       "attrs": {
         "dilate": "(1, 1)", 
         "kernel": "(1, 1)", 
@@ -395,7 +404,7 @@
     }, 
     {
       "op": "null", 
-      "name": "invertedresidual1_batchnorm0_gamma", 
+      "name": "stage1_expandedconv0_expand_batchnorm0_gamma", 
       "attrs": {
         "__dtype__": "0", 
         "__init__": "ones", 
@@ -407,7 +416,7 @@
     }, 
     {
       "op": "null", 
-      "name": "invertedresidual1_batchnorm0_beta", 
+      "name": "stage1_expandedconv0_expand_batchnorm0_beta", 
       "attrs": {
         "__dtype__": "0", 
         "__init__": "zeros", 
@@ -419,7 +428,7 @@
     }, 
     {
       "op": "null", 
-      "name": "invertedresidual1_batchnorm0_running_mean", 
+      "name": "stage1_expandedconv0_expand_batchnorm0_running_mean", 
       "attrs": {
         "__dtype__": "0", 
         "__init__": "zeros", 
@@ -431,7 +440,7 @@
     }, 
     {
       "op": "null", 
-      "name": "invertedresidual1_batchnorm0_running_var", 
+      "name": "stage1_expandedconv0_expand_batchnorm0_running_var", 
       "attrs": {
         "__dtype__": "0", 
         "__init__": "ones", 
@@ -443,7 +452,7 @@
     }, 
     {
       "op": "BatchNorm", 
-      "name": "invertedresidual1_batchnorm0_fwd", 
+      "name": "stage1_expandedconv0_expand_batchnorm0_fwd", 
       "attrs": {
         "axis": "1", 
         "eps": "1e-05", 
@@ -454,25 +463,28 @@
       "inputs": [[33, 0, 0], [34, 0, 0], [35, 0, 0], [36, 0, 1], [37, 0, 1]]
     }, 
     {
-      "op": "Activation", 
-      "name": "invertedresidual1_relu0_fwd", 
-      "attrs": {"act_type": "relu"}, 
+      "op": "clip", 
+      "name": "stage1_expandedconv0_expand_relu6_fwd", 
+      "attrs": {
+        "a_max": "6", 
+        "a_min": "0"
+      }, 
       "inputs": [[38, 0, 0]]
     }, 
     {
       "op": "null", 
-      "name": "invertedresidual1_conv1_weight", 
+      "name": "stage1_expandedconv0_dwise_conv0_weight", 
       "attrs": {
         "__dtype__": "0", 
         "__lr_mult__": "1.0", 
-        "__shape__": "(96, 0, 3, 3)", 
+        "__shape__": "(96L, 0L, 3L, 3L)", 
         "__wd_mult__": "1.0"
       }, 
       "inputs": []
     }, 
     {
       "op": "Convolution", 
-      "name": "invertedresidual1_conv1_fwd", 
+      "name": "stage1_expandedconv0_dwise_conv0_fwd", 
       "attrs": {
         "dilate": "(1, 1)", 
         "kernel": "(3, 3)", 
@@ -487,7 +499,7 @@
     }, 
     {
       "op": "null", 
-      "name": "invertedresidual1_batchnorm1_gamma", 
+      "name": "stage1_expandedconv0_dwise_batchnorm0_gamma", 
       "attrs": {
         "__dtype__": "0", 
         "__init__": "ones", 
@@ -499,7 +511,7 @@
     }, 
     {
       "op": "null", 
-      "name": "invertedresidual1_batchnorm1_beta", 
+      "name": "stage1_expandedconv0_dwise_batchnorm0_beta", 
       "attrs": {
         "__dtype__": "0", 
         "__init__": "zeros", 
@@ -511,7 +523,7 @@
     }, 
     {
       "op": "null", 
-      "name": "invertedresidual1_batchnorm1_running_mean", 
+      "name": "stage1_expandedconv0_dwise_batchnorm0_running_mean", 
       "attrs": {
         "__dtype__": "0", 
         "__init__": "zeros", 
@@ -523,7 +535,7 @@
     }, 
     {
       "op": "null", 
-      "name": "invertedresidual1_batchnorm1_running_var", 
+      "name": "stage1_expandedconv0_dwise_batchnorm0_running_var", 
       "attrs": {
         "__dtype__": "0", 
         "__init__": "ones", 
@@ -535,7 +547,7 @@
     }, 
     {
       "op": "BatchNorm", 
-      "name": "invertedresidual1_batchnorm1_fwd", 
+      "name": "stage1_expandedconv0_dwise_batchnorm0_fwd", 
       "attrs": {
         "axis": "1", 
         "eps": "1e-05", 
@@ -546,25 +558,28 @@
       "inputs": [[41, 0, 0], [42, 0, 0], [43, 0, 0], [44, 0, 1], [45, 0, 1]]
     }, 
     {
-      "op": "Activation", 
-      "name": "invertedresidual1_relu1_fwd", 
-      "attrs": {"act_type": "relu"}, 
+      "op": "clip", 
+      "name": "stage1_expandedconv0_dwise_relu6_fwd", 
+      "attrs": {
+        "a_max": "6", 
+        "a_min": "0"
+      }, 
       "inputs": [[46, 0, 0]]
     }, 
     {
       "op": "null", 
-      "name": "invertedresidual1_conv2_weight", 
+      "name": "stage1_expandedconv0_linear_conv0_weight", 
       "attrs": {
         "__dtype__": "0", 
         "__lr_mult__": "1.0", 
-        "__shape__": "(24, 0, 1, 1)", 
+        "__shape__": "(24L, 0L, 1L, 1L)", 
         "__wd_mult__": "1.0"
       }, 
       "inputs": []
     }, 
     {
       "op": "Convolution", 
-      "name": "invertedresidual1_conv2_fwd", 
+      "name": "stage1_expandedconv0_linear_conv0_fwd", 
       "attrs": {
         "dilate": "(1, 1)", 
         "kernel": "(1, 1)", 
@@ -579,7 +594,7 @@
     }, 
     {
       "op": "null", 
-      "name": "invertedresidual1_batchnorm2_gamma", 
+      "name": "stage1_expandedconv0_linear_batchnorm0_gamma", 
       "attrs": {
         "__dtype__": "0", 
         "__init__": "ones", 
@@ -591,7 +606,7 @@
     }, 
     {
       "op": "null", 
-      "name": "invertedresidual1_batchnorm2_beta", 
+      "name": "stage1_expandedconv0_linear_batchnorm0_beta", 
       "attrs": {
         "__dtype__": "0", 
         "__init__": "zeros", 
@@ -603,7 +618,7 @@
     }, 
     {
       "op": "null", 
-      "name": "invertedresidual1_batchnorm2_running_mean", 
+      "name": "stage1_expandedconv0_linear_batchnorm0_running_mean", 
       "attrs": {
         "__dtype__": "0", 
         "__init__": "zeros", 
@@ -615,7 +630,7 @@
     }, 
     {
       "op": "null", 
-      "name": "invertedresidual1_batchnorm2_running_var", 
+      "name": "stage1_expandedconv0_linear_batchnorm0_running_var", 
       "attrs": {
         "__dtype__": "0", 
         "__init__": "ones", 
@@ -627,7 +642,7 @@
     }, 
     {
       "op": "BatchNorm", 
-      "name": "invertedresidual1_batchnorm2_fwd", 
+      "name": "stage1_expandedconv0_linear_batchnorm0_fwd", 
       "attrs": {
         "axis": "1", 
         "eps": "1e-05", 
@@ -639,18 +654,18 @@
     }, 
     {
       "op": "null", 
-      "name": "invertedresidual2_conv0_weight", 
+      "name": "stage1_expandedconv1_expand_conv0_weight", 
       "attrs": {
         "__dtype__": "0", 
         "__lr_mult__": "1.0", 
-        "__shape__": "(144, 0, 1, 1)", 
+        "__shape__": "(144L, 0L, 1L, 1L)", 
         "__wd_mult__": "1.0"
       }, 
       "inputs": []
     }, 
     {
       "op": "Convolution", 
-      "name": "invertedresidual2_conv0_fwd", 
+      "name": "stage1_expandedconv1_expand_conv0_fwd", 
       "attrs": {
         "dilate": "(1, 1)", 
         "kernel": "(1, 1)", 
@@ -665,7 +680,7 @@
     }, 
     {
       "op": "null", 
-      "name": "invertedresidual2_batchnorm0_gamma", 
+      "name": "stage1_expandedconv1_expand_batchnorm0_gamma", 
       "attrs": {
         "__dtype__": "0", 
         "__init__": "ones", 
@@ -677,7 +692,7 @@
     }, 
     {
       "op": "null", 
-      "name": "invertedresidual2_batchnorm0_beta", 
+      "name": "stage1_expandedconv1_expand_batchnorm0_beta", 
       "attrs": {
         "__dtype__": "0", 
         "__init__": "zeros", 
@@ -689,7 +704,7 @@
     }, 
     {
       "op": "null", 
-      "name": "invertedresidual2_batchnorm0_running_mean", 
+      "name": "stage1_expandedconv1_expand_batchnorm0_running_mean", 
       "attrs": {
         "__dtype__": "0", 
         "__init__": "zeros", 
@@ -701,7 +716,7 @@
     }, 
     {
       "op": "null", 
-      "name": "invertedresidual2_batchnorm0_running_var", 
+      "name": "stage1_expandedconv1_expand_batchnorm0_running_var", 
       "attrs": {
         "__dtype__": "0", 
         "__init__": "ones", 
@@ -713,7 +728,7 @@
     }, 
     {
       "op": "BatchNorm", 
-      "name": "invertedresidual2_batchnorm0_fwd", 
+      "name": "stage1_expandedconv1_expand_batchnorm0_fwd", 
       "attrs": {
         "axis": "1", 
         "eps": "1e-05", 
@@ -724,25 +739,28 @@
       "inputs": [[56, 0, 0], [57, 0, 0], [58, 0, 0], [59, 0, 1], [60, 0, 1]]
     }, 
     {
-      "op": "Activation", 
-      "name": "invertedresidual2_relu0_fwd", 
-      "attrs": {"act_type": "relu"}, 
+      "op": "clip", 
+      "name": "stage1_expandedconv1_expand_relu6_fwd", 
+      "attrs": {
+        "a_max": "6", 
+        "a_min": "0"
+      }, 
       "inputs": [[61, 0, 0]]
     }, 
     {
       "op": "null", 
-      "name": "invertedresidual2_conv1_weight", 
+      "name": "stage1_expandedconv1_dwise_conv0_weight", 
       "attrs": {
         "__dtype__": "0", 
         "__lr_mult__": "1.0", 
-        "__shape__": "(144, 0, 3, 3)", 
+        "__shape__": "(144L, 0L, 3L, 3L)", 
         "__wd_mult__": "1.0"
       }, 
       "inputs": []
     }, 
     {
       "op": "Convolution", 
-      "name": "invertedresidual2_conv1_fwd", 
+      "name": "stage1_expandedconv1_dwise_conv0_fwd", 
       "attrs": {
         "dilate": "(1, 1)", 
         "kernel": "(3, 3)", 
@@ -757,7 +775,7 @@
     }, 
     {
       "op": "null", 
-      "name": "invertedresidual2_batchnorm1_gamma", 
+      "name": "stage1_expandedconv1_dwise_batchnorm0_gamma", 
       "attrs": {
         "__dtype__": "0", 
         "__init__": "ones", 
@@ -769,7 +787,7 @@
     }, 
     {
       "op": "null", 
-      "name": "invertedresidual2_batchnorm1_beta", 
+      "name": "stage1_expandedconv1_dwise_batchnorm0_beta", 
       "attrs": {
         "__dtype__": "0", 
         "__init__": "zeros", 
@@ -781,7 +799,7 @@
     }, 
     {
       "op": "null", 
-      "name": "invertedresidual2_batchnorm1_running_mean", 
+      "name": "stage1_expandedconv1_dwise_batchnorm0_running_mean", 
       "attrs": {
         "__dtype__": "0", 
         "__init__": "zeros", 
@@ -793,7 +811,7 @@
     }, 
     {
       "op": "null", 
-      "name": "invertedresidual2_batchnorm1_running_var", 
+      "name": "stage1_expandedconv1_dwise_batchnorm0_running_var", 
       "attrs": {
         "__dtype__": "0", 
         "__init__": "ones", 
@@ -805,7 +823,7 @@
     }, 
     {
       "op": "BatchNorm", 
-      "name": "invertedresidual2_batchnorm1_fwd", 
+      "name": "stage1_expandedconv1_dwise_batchnorm0_fwd", 
       "attrs": {
         "axis": "1", 
         "eps": "1e-05", 
@@ -816,25 +834,28 @@
       "inputs": [[64, 0, 0], [65, 0, 0], [66, 0, 0], [67, 0, 1], [68, 0, 1]]
     }, 
     {
-      "op": "Activation", 
-      "name": "invertedresidual2_relu1_fwd", 
-      "attrs": {"act_type": "relu"}, 
+      "op": "clip", 
+      "name": "stage1_expandedconv1_dwise_relu6_fwd", 
+      "attrs": {
+        "a_max": "6", 
+        "a_min": "0"
+      }, 
       "inputs": [[69, 0, 0]]
     }, 
     {
       "op": "null", 
-      "name": "invertedresidual2_conv2_weight", 
+      "name": "stage1_expandedconv1_linear_conv0_weight", 
       "attrs": {
         "__dtype__": "0", 
         "__lr_mult__": "1.0", 
-        "__shape__": "(24, 0, 1, 1)", 
+        "__shape__": "(24L, 0L, 1L, 1L)", 
         "__wd_mult__": "1.0"
       }, 
       "inputs": []
     }, 
     {
       "op": "Convolution", 
-      "name": "invertedresidual2_conv2_fwd", 
+      "name": "stage1_expandedconv1_linear_conv0_fwd", 
       "attrs": {
         "dilate": "(1, 1)", 
         "kernel": "(1, 1)", 
@@ -849,7 +870,7 @@
     }, 
     {
       "op": "null", 
-      "name": "invertedresidual2_batchnorm2_gamma", 
+      "name": "stage1_expandedconv1_linear_batchnorm0_gamma", 
       "attrs": {
         "__dtype__": "0", 
         "__init__": "ones", 
@@ -861,7 +882,7 @@
     }, 
     {
       "op": "null", 
-      "name": "invertedresidual2_batchnorm2_beta", 
+      "name": "stage1_expandedconv1_linear_batchnorm0_beta", 
       "attrs": {
         "__dtype__": "0", 
         "__init__": "zeros", 
@@ -873,7 +894,7 @@
     }, 
     {
       "op": "null", 
-      "name": "invertedresidual2_batchnorm2_running_mean", 
+      "name": "stage1_expandedconv1_linear_batchnorm0_running_mean", 
       "attrs": {
         "__dtype__": "0", 
         "__init__": "zeros", 
@@ -885,7 +906,7 @@
     }, 
     {
       "op": "null", 
-      "name": "invertedresidual2_batchnorm2_running_var", 
+      "name": "stage1_expandedconv1_linear_batchnorm0_running_var", 
       "attrs": {
         "__dtype__": "0", 
         "__init__": "ones", 
@@ -897,7 +918,7 @@
     }, 
     {
       "op": "BatchNorm", 
-      "name": "invertedresidual2_batchnorm2_fwd", 
+      "name": "stage1_expandedconv1_linear_batchnorm0_fwd", 
       "attrs": {
         "axis": "1", 
         "eps": "1e-05", 
@@ -909,23 +930,23 @@
     }, 
     {
       "op": "elemwise_add", 
-      "name": "invertedresidual2_elemwise_add0", 
+      "name": "stage1_expandedconv1_elemwise_add0", 
       "inputs": [[77, 0, 0], [54, 0, 0]]
     }, 
     {
       "op": "null", 
-      "name": "invertedresidual3_conv0_weight", 
+      "name": "stage2_expandedconv0_expand_conv0_weight", 
       "attrs": {
         "__dtype__": "0", 
         "__lr_mult__": "1.0", 
-        "__shape__": "(144, 0, 1, 1)", 
+        "__shape__": "(144L, 0L, 1L, 1L)", 
         "__wd_mult__": "1.0"
       }, 
       "inputs": []
     }, 
     {
       "op": "Convolution", 
-      "name": "invertedresidual3_conv0_fwd", 
+      "name": "stage2_expandedconv0_expand_conv0_fwd", 
       "attrs": {
         "dilate": "(1, 1)", 
         "kernel": "(1, 1)", 
@@ -940,7 +961,7 @@
     }, 
     {
       "op": "null", 
-      "name": "invertedresidual3_batchnorm0_gamma", 
+      "name": "stage2_expandedconv0_expand_batchnorm0_gamma", 
       "attrs": {
         "__dtype__": "0", 
         "__init__": "ones", 
@@ -952,7 +973,7 @@
     }, 
     {
       "op": "null", 
-      "name": "invertedresidual3_batchnorm0_beta", 
+      "name": "stage2_expandedconv0_expand_batchnorm0_beta", 
       "attrs": {
         "__dtype__": "0", 
         "__init__": "zeros", 
@@ -964,7 +985,7 @@
     }, 
     {
       "op": "null", 
-      "name": "invertedresidual3_batchnorm0_running_mean", 
+      "name": "stage2_expandedconv0_expand_batchnorm0_running_mean", 
       "attrs": {
         "__dtype__": "0", 
         "__init__": "zeros", 
@@ -976,7 +997,7 @@
     }, 
     {
       "op": "null", 
-      "name": "invertedresidual3_batchnorm0_running_var", 
+      "name": "stage2_expandedconv0_expand_batchnorm0_running_var", 
       "attrs": {
         "__dtype__": "0", 
         "__init__": "ones", 
@@ -988,7 +1009,7 @@
     }, 
     {
       "op": "BatchNorm", 
-      "name": "invertedresidual3_batchnorm0_fwd", 
+      "name": "stage2_expandedconv0_expand_batchnorm0_fwd", 
       "attrs": {
         "axis": "1", 
         "eps": "1e-05", 
@@ -999,25 +1020,28 @@
       "inputs": [[80, 0, 0], [81, 0, 0], [82, 0, 0], [83, 0, 1], [84, 0, 1]]
     }, 
     {
-      "op": "Activation", 
-      "name": "invertedresidual3_relu0_fwd", 
-      "attrs": {"act_type": "relu"}, 
+      "op": "clip", 
+      "name": "stage2_expandedconv0_expand_relu6_fwd", 
+      "attrs": {
+        "a_max": "6", 
+        "a_min": "0"
+      }, 
       "inputs": [[85, 0, 0]]
     }, 
     {
       "op": "null", 
-      "name": "invertedresidual3_conv1_weight", 
+      "name": "stage2_expandedconv0_dwise_conv0_weight", 
       "attrs": {
         "__dtype__": "0", 
         "__lr_mult__": "1.0", 
-        "__shape__": "(144, 0, 3, 3)", 
+        "__shape__": "(144L, 0L, 3L, 3L)", 
         "__wd_mult__": "1.0"
       }, 
       "inputs": []
     }, 
     {
       "op": "Convolution", 
-      "name": "invertedresidual3_conv1_fwd", 
+      "name": "stage2_expandedconv0_dwise_conv0_fwd", 
       "attrs": {
         "dilate": "(1, 1)", 
         "kernel": "(3, 3)", 
@@ -1032,7 +1056,7 @@
     }, 
     {
       "op": "null", 
-      "name": "invertedresidual3_batchnorm1_gamma", 
+      "name": "stage2_expandedconv0_dwise_batchnorm0_gamma", 
       "attrs": {
         "__dtype__": "0", 
         "__init__": "ones", 
@@ -1044,7 +1068,7 @@
     }, 
     {
       "op": "null", 
-      "name": "invertedresidual3_batchnorm1_beta", 
+      "name": "stage2_expandedconv0_dwise_batchnorm0_beta", 
       "attrs": {
         "__dtype__": "0", 
         "__init__": "zeros", 
@@ -1056,7 +1080,7 @@
     }, 
     {
       "op": "null", 
-      "name": "invertedresidual3_batchnorm1_running_mean", 
+      "name": "stage2_expandedconv0_dwise_batchnorm0_running_mean", 
       "attrs": {
         "__dtype__": "0", 
         "__init__": "zeros", 
@@ -1068,7 +1092,7 @@
     }, 
     {
       "op": "null", 
-      "name": "invertedresidual3_batchnorm1_running_var", 
+      "name": "stage2_expandedconv0_dwise_batchnorm0_running_var", 
       "attrs": {
         "__dtype__": "0", 
         "__init__": "ones", 
@@ -1080,7 +1104,7 @@
     }, 
     {
       "op": "BatchNorm", 
-      "name": "invertedresidual3_batchnorm1_fwd", 
+      "name": "stage2_expandedconv0_dwise_batchnorm0_fwd", 
       "attrs": {
         "axis": "1", 
         "eps": "1e-05", 
@@ -1091,25 +1115,28 @@
       "inputs": [[88, 0, 0], [89, 0, 0], [90, 0, 0], [91, 0, 1], [92, 0, 1]]
     }, 
     {
-      "op": "Activation", 
-      "name": "invertedresidual3_relu1_fwd", 
-      "attrs": {"act_type": "relu"}, 
+      "op": "clip", 
+      "name": "stage2_expandedconv0_dwise_relu6_fwd", 
+      "attrs": {
+        "a_max": "6", 
+        "a_min": "0"
+      }, 
       "inputs": [[93, 0, 0]]
     }, 
     {
       "op": "null", 
-      "name": "invertedresidual3_conv2_weight", 
+      "name": "stage2_expandedconv0_linear_conv0_weight", 
       "attrs": {
         "__dtype__": "0", 
         "__lr_mult__": "1.0", 
-        "__shape__": "(32, 0, 1, 1)", 
+        "__shape__": "(32L, 0L, 1L, 1L)", 
         "__wd_mult__": "1.0"
       }, 
       "inputs": []
     }, 
     {
       "op": "Convolution", 
-      "name": "invertedresidual3_conv2_fwd", 
+      "name": "stage2_expandedconv0_linear_conv0_fwd", 
       "attrs": {
         "dilate": "(1, 1)", 
         "kernel": "(1, 1)", 
@@ -1124,7 +1151,7 @@
     }, 
     {
       "op": "null", 
-      "name": "invertedresidual3_batchnorm2_gamma", 
+      "name": "stage2_expandedconv0_linear_batchnorm0_gamma", 
       "attrs": {
         "__dtype__": "0", 
         "__init__": "ones", 
@@ -1136,7 +1163,7 @@
     }, 
     {
       "op": "null", 
-      "name": "invertedresidual3_batchnorm2_beta", 
+      "name": "stage2_expandedconv0_linear_batchnorm0_beta", 
       "attrs": {
         "__dtype__": "0", 
         "__init__": "zeros", 
@@ -1148,7 +1175,7 @@
     }, 
     {
       "op": "null", 
-      "name": "invertedresidual3_batchnorm2_running_mean", 
+      "name": "stage2_expandedconv0_linear_batchnorm0_running_mean", 
       "attrs": {
         "__dtype__": "0", 
         "__init__": "zeros", 
@@ -1160,7 +1187,7 @@
     }, 
     {
       "op": "null", 
-      "name": "invertedresidual3_batchnorm2_running_var", 
+      "name": "stage2_expandedconv0_linear_batchnorm0_running_var", 
       "attrs": {
         "__dtype__": "0", 
         "__init__": "ones", 
@@ -1172,7 +1199,7 @@
     }, 
     {
       "op": "BatchNorm", 
-      "name": "invertedresidual3_batchnorm2_fwd", 
+      "name": "stage2_expandedconv0_linear_batchnorm0_fwd", 
       "attrs": {
         "axis": "1", 
         "eps": "1e-05", 
@@ -1184,18 +1211,18 @@
     }, 
     {
       "op": "null", 
-      "name": "invertedresidual4_conv0_weight", 
+      "name": "stage2_expandedconv1_expand_conv0_weight", 
       "attrs": {
         "__dtype__": "0", 
         "__lr_mult__": "1.0", 
-        "__shape__": "(192, 0, 1, 1)", 
+        "__shape__": "(192L, 0L, 1L, 1L)", 
         "__wd_mult__": "1.0"
       }, 
       "inputs": []
     }, 
     {
       "op": "Convolution", 
-      "name": "invertedresidual4_conv0_fwd", 
+      "name": "stage2_expandedconv1_expand_conv0_fwd", 
       "attrs": {
         "dilate": "(1, 1)", 
         "kernel": "(1, 1)", 
@@ -1210,7 +1237,7 @@
     }, 
     {
       "op": "null", 
-      "name": "invertedresidual4_batchnorm0_gamma", 
+      "name": "stage2_expandedconv1_expand_batchnorm0_gamma", 
       "attrs": {
         "__dtype__": "0", 
         "__init__": "ones", 
@@ -1222,7 +1249,7 @@
     }, 
     {
       "op": "null", 
-      "name": "invertedresidual4_batchnorm0_beta", 
+      "name": "stage2_expandedconv1_expand_batchnorm0_beta", 
       "attrs": {
         "__dtype__": "0", 
         "__init__": "zeros", 
@@ -1234,7 +1261,7 @@
     }, 
     {
       "op": "null", 
-      "name": "invertedresidual4_batchnorm0_running_mean", 
+      "name": "stage2_expandedconv1_expand_batchnorm0_running_mean", 
       "attrs": {
         "__dtype__": "0", 
         "__init__": "zeros", 
@@ -1246,7 +1273,7 @@
     }, 
     {
       "op": "null", 
-      "name": "invertedresidual4_batchnorm0_running_var", 
+      "name": "stage2_expandedconv1_expand_batchnorm0_running_var", 
       "attrs": {
         "__dtype__": "0", 
         "__init__": "ones", 
@@ -1258,7 +1285,7 @@
     }, 
     {
       "op": "BatchNorm", 
-      "name": "invertedresidual4_batchnorm0_fwd", 
+      "name": "stage2_expandedconv1_expand_batchnorm0_fwd", 
       "attrs": {
         "axis": "1", 
         "eps": "1e-05", 
@@ -1269,25 +1296,28 @@
       "inputs": [[103, 0, 0], [104, 0, 0], [105, 0, 0], [106, 0, 1], [107, 0, 1]]
     }, 
     {
-      "op": "Activation", 
-      "name": "invertedresidual4_relu0_fwd", 
-      "attrs": {"act_type": "relu"}, 
+      "op": "clip", 
+      "name": "stage2_expandedconv1_expand_relu6_fwd", 
+      "attrs": {
+        "a_max": "6", 
+        "a_min": "0"
+      }, 
       "inputs": [[108, 0, 0]]
     }, 
     {
       "op": "null", 
-      "name": "invertedresidual4_conv1_weight", 
+      "name": "stage2_expandedconv1_dwise_conv0_weight", 
       "attrs": {
         "__dtype__": "0", 
         "__lr_mult__": "1.0", 
-        "__shape__": "(192, 0, 3, 3)", 
+        "__shape__": "(192L, 0L, 3L, 3L)", 
         "__wd_mult__": "1.0"
       }, 
       "inputs": []
     }, 
     {
       "op": "Convolution", 
-      "name": "invertedresidual4_conv1_fwd", 
+      "name": "stage2_expandedconv1_dwise_conv0_fwd", 
       "attrs": {
         "dilate": "(1, 1)", 
         "kernel": "(3, 3)", 
@@ -1302,7 +1332,7 @@
     }, 
     {
       "op": "null", 
-      "name": "invertedresidual4_batchnorm1_gamma", 
+      "name": "stage2_expandedconv1_dwise_batchnorm0_gamma", 
       "attrs": {
         "__dtype__": "0", 
         "__init__": "ones", 
@@ -1314,7 +1344,7 @@
     }, 
     {
       "op": "null", 
-      "name": "invertedresidual4_batchnorm1_beta", 
+      "name": "stage2_expandedconv1_dwise_batchnorm0_beta", 
       "attrs": {
         "__dtype__": "0", 
         "__init__": "zeros", 
@@ -1326,7 +1356,7 @@
     }, 
     {
       "op": "null", 
-      "name": "invertedresidual4_batchnorm1_running_mean", 
+      "name": "stage2_expandedconv1_dwise_batchnorm0_running_mean", 
       "attrs": {
         "__dtype__": "0", 
         "__init__": "zeros", 
@@ -1338,7 +1368,7 @@
     }, 
     {
       "op": "null", 
-      "name": "invertedresidual4_batchnorm1_running_var", 
+      "name": "stage2_expandedconv1_dwise_batchnorm0_running_var", 
       "attrs": {
         "__dtype__": "0", 
         "__init__": "ones", 
@@ -1350,7 +1380,7 @@
     }, 
     {
       "op": "BatchNorm", 
-      "name": "invertedresidual4_batchnorm1_fwd", 
+      "name": "stage2_expandedconv1_dwise_batchnorm0_fwd", 
       "attrs": {
         "axis": "1", 
         "eps": "1e-05", 
@@ -1361,25 +1391,28 @@
       "inputs": [[111, 0, 0], [112, 0, 0], [113, 0, 0], [114, 0, 1], [115, 0, 1]]
     }, 
     {
-      "op": "Activation", 
-      "name": "invertedresidual4_relu1_fwd", 
-      "attrs": {"act_type": "relu"}, 
+      "op": "clip", 
+      "name": "stage2_expandedconv1_dwise_relu6_fwd", 
+      "attrs": {
+        "a_max": "6", 
+        "a_min": "0"
+      }, 
       "inputs": [[116, 0, 0]]
     }, 
     {
       "op": "null", 
-      "name": "invertedresidual4_conv2_weight", 
+      "name": "stage2_expandedconv1_linear_conv0_weight", 
       "attrs": {
         "__dtype__": "0", 
         "__lr_mult__": "1.0", 
-        "__shape__": "(32, 0, 1, 1)", 
+        "__shape__": "(32L, 0L, 1L, 1L)", 
         "__wd_mult__": "1.0"
       }, 
       "inputs": []
     }, 
     {
       "op": "Convolution", 
-      "name": "invertedresidual4_conv2_fwd", 
+      "name": "stage2_expandedconv1_linear_conv0_fwd", 
       "attrs": {
         "dilate": "(1, 1)", 
         "kernel": "(1, 1)", 
@@ -1394,7 +1427,7 @@
     }, 
     {
       "op": "null", 
-      "name": "invertedresidual4_batchnorm2_gamma", 
+      "name": "stage2_expandedconv1_linear_batchnorm0_gamma", 
       "attrs": {
         "__dtype__": "0", 
         "__init__": "ones", 
@@ -1406,7 +1439,7 @@
     }, 
     {
       "op": "null", 
-      "name": "invertedresidual4_batchnorm2_beta", 
+      "name": "stage2_expandedconv1_linear_batchnorm0_beta", 
       "attrs": {
         "__dtype__": "0", 
         "__init__": "zeros", 
@@ -1418,7 +1451,7 @@
     }, 
     {
       "op": "null", 
-      "name": "invertedresidual4_batchnorm2_running_mean", 
+      "name": "stage2_expandedconv1_linear_batchnorm0_running_mean", 
       "attrs": {
         "__dtype__": "0", 
         "__init__": "zeros", 
@@ -1430,7 +1463,7 @@
     }, 
     {
       "op": "null", 
-      "name": "invertedresidual4_batchnorm2_running_var", 
+      "name": "stage2_expandedconv1_linear_batchnorm0_running_var", 
       "attrs": {
         "__dtype__": "0", 
         "__init__": "ones", 
@@ -1442,7 +1475,7 @@
     }, 
     {
       "op": "BatchNorm", 
-      "name": "invertedresidual4_batchnorm2_fwd", 
+      "name": "stage2_expandedconv1_linear_batchnorm0_fwd", 
       "attrs": {
         "axis": "1", 
         "eps": "1e-05", 
@@ -1454,23 +1487,23 @@
     }, 
     {
       "op": "elemwise_add", 
-      "name": "invertedresidual4_elemwise_add0", 
+      "name": "stage2_expandedconv1_elemwise_add0", 
       "inputs": [[124, 0, 0], [101, 0, 0]]
     }, 
     {
       "op": "null", 
-      "name": "invertedresidual5_conv0_weight", 
+      "name": "stage2_expandedconv2_expand_conv0_weight", 
       "attrs": {
         "__dtype__": "0", 
         "__lr_mult__": "1.0", 
-        "__shape__": "(192, 0, 1, 1)", 
+        "__shape__": "(192L, 0L, 1L, 1L)", 
         "__wd_mult__": "1.0"
       }, 
       "inputs": []
     }, 
     {
       "op": "Convolution", 
-      "name": "invertedresidual5_conv0_fwd", 
+      "name": "stage2_expandedconv2_expand_conv0_fwd", 
       "attrs": {
         "dilate": "(1, 1)", 
         "kernel": "(1, 1)", 
@@ -1485,7 +1518,7 @@
     }, 
     {
       "op": "null", 
-      "name": "invertedresidual5_batchnorm0_gamma", 
+      "name": "stage2_expandedconv2_expand_batchnorm0_gamma", 
       "attrs": {
         "__dtype__": "0", 
         "__init__": "ones", 
@@ -1497,7 +1530,7 @@
     }, 
     {
       "op": "null", 
-      "name": "invertedresidual5_batchnorm0_beta", 
+      "name": "stage2_expandedconv2_expand_batchnorm0_beta", 
       "attrs": {
         "__dtype__": "0", 
         "__init__": "zeros", 
@@ -1509,7 +1542,7 @@
     }, 
     {
       "op": "null", 
-      "name": "invertedresidual5_batchnorm0_running_mean", 
+      "name": "stage2_expandedconv2_expand_batchnorm0_running_mean", 
       "attrs": {
         "__dtype__": "0", 
         "__init__": "zeros", 
@@ -1521,7 +1554,7 @@
     }, 
     {
       "op": "null", 
-      "name": "invertedresidual5_batchnorm0_running_var", 
+      "name": "stage2_expandedconv2_expand_batchnorm0_running_var", 
       "attrs": {
         "__dtype__": "0", 
         "__init__": "ones", 
@@ -1533,7 +1566,7 @@
     }, 
     {
       "op": "BatchNorm", 
-      "name": "invertedresidual5_batchnorm0_fwd", 
+      "name": "stage2_expandedconv2_expand_batchnorm0_fwd", 
       "attrs": {
         "axis": "1", 
         "eps": "1e-05", 
@@ -1544,25 +1577,28 @@
       "inputs": [[127, 0, 0], [128, 0, 0], [129, 0, 0], [130, 0, 1], [131, 0, 1]]
     }, 
     {
-      "op": "Activation", 
-      "name": "invertedresidual5_relu0_fwd", 
-      "attrs": {"act_type": "relu"}, 
+      "op": "clip", 
+      "name": "stage2_expandedconv2_expand_relu6_fwd", 
+      "attrs": {
+        "a_max": "6", 
+        "a_min": "0"
+      }, 
       "inputs": [[132, 0, 0]]
     }, 
     {
       "op": "null", 
-      "name": "invertedresidual5_conv1_weight", 
+      "name": "stage2_expandedconv2_dwise_conv0_weight", 
       "attrs": {
         "__dtype__": "0", 
         "__lr_mult__": "1.0", 
-        "__shape__": "(192, 0, 3, 3)", 
+        "__shape__": "(192L, 0L, 3L, 3L)", 
         "__wd_mult__": "1.0"
       }, 
       "inputs": []
     }, 
     {
       "op": "Convolution", 
-      "name": "invertedresidual5_conv1_fwd", 
+      "name": "stage2_expandedconv2_dwise_conv0_fwd", 
       "attrs": {
         "dilate": "(1, 1)", 
         "kernel": "(3, 3)", 
@@ -1577,7 +1613,7 @@
     }, 
     {
       "op": "null", 
-      "name": "invertedresidual5_batchnorm1_gamma", 
+      "name": "stage2_expandedconv2_dwise_batchnorm0_gamma", 
       "attrs": {
         "__dtype__": "0", 
         "__init__": "ones", 
@@ -1589,7 +1625,7 @@
     }, 
     {
       "op": "null", 
-      "name": "invertedresidual5_batchnorm1_beta", 
+      "name": "stage2_expandedconv2_dwise_batchnorm0_beta", 
       "attrs": {
         "__dtype__": "0", 
         "__init__": "zeros", 
@@ -1601,7 +1637,7 @@
     }, 
     {
       "op": "null", 
-      "name": "invertedresidual5_batchnorm1_running_mean", 
+      "name": "stage2_expandedconv2_dwise_batchnorm0_running_mean", 
       "attrs": {
         "__dtype__": "0", 
         "__init__": "zeros", 
@@ -1613,7 +1649,7 @@
     }, 
     {
       "op": "null", 
-      "name": "invertedresidual5_batchnorm1_running_var", 
+      "name": "stage2_expandedconv2_dwise_batchnorm0_running_var", 
       "attrs": {
         "__dtype__": "0", 
         "__init__": "ones", 
@@ -1625,7 +1661,7 @@
     }, 
     {
       "op": "BatchNorm", 
-      "name": "invertedresidual5_batchnorm1_fwd", 
+      "name": "stage2_expandedconv2_dwise_batchnorm0_fwd", 
       "attrs": {
         "axis": "1", 
         "eps": "1e-05", 
@@ -1636,25 +1672,28 @@
       "inputs": [[135, 0, 0], [136, 0, 0], [137, 0, 0], [138, 0, 1], [139, 0, 1]]
     }, 
     {
-      "op": "Activation", 
-      "name": "invertedresidual5_relu1_fwd", 
-      "attrs": {"act_type": "relu"}, 
+      "op": "clip", 
+      "name": "stage2_expandedconv2_dwise_relu6_fwd", 
+      "attrs": {
+        "a_max": "6", 
+        "a_min": "0"
+      }, 
       "inputs": [[140, 0, 0]]
     }, 
     {
       "op": "null", 
-      "name": "invertedresidual5_conv2_weight", 
+      "name": "stage2_expandedconv2_linear_conv0_weight", 
       "attrs": {
         "__dtype__": "0", 
         "__lr_mult__": "1.0", 
-        "__shape__": "(32, 0, 1, 1)", 
+        "__shape__": "(32L, 0L, 1L, 1L)", 
         "__wd_mult__": "1.0"
       }, 
       "inputs": []
     }, 
     {
       "op": "Convolution", 
-      "name": "invertedresidual5_conv2_fwd", 
+      "name": "stage2_expandedconv2_linear_conv0_fwd", 
       "attrs": {
         "dilate": "(1, 1)", 
         "kernel": "(1, 1)", 
@@ -1669,7 +1708,7 @@
     }, 
     {
       "op": "null", 
-      "name": "invertedresidual5_batchnorm2_gamma", 
+      "name": "stage2_expandedconv2_linear_batchnorm0_gamma", 
       "attrs": {
         "__dtype__": "0", 
         "__init__": "ones", 
@@ -1681,7 +1720,7 @@
     }, 
     {
       "op": "null", 
-      "name": "invertedresidual5_batchnorm2_beta", 
+      "name": "stage2_expandedconv2_linear_batchnorm0_beta", 
       "attrs": {
         "__dtype__": "0", 
         "__init__": "zeros", 
@@ -1693,7 +1732,7 @@
     }, 
     {
       "op": "null", 
-      "name": "invertedresidual5_batchnorm2_running_mean", 
+      "name": "stage2_expandedconv2_linear_batchnorm0_running_mean", 
       "attrs": {
         "__dtype__": "0", 
         "__init__": "zeros", 
@@ -1705,7 +1744,7 @@
     }, 
     {
       "op": "null", 
-      "name": "invertedresidual5_batchnorm2_running_var", 
+      "name": "stage2_expandedconv2_linear_batchnorm0_running_var", 
       "attrs": {
         "__dtype__": "0", 
         "__init__": "ones", 
@@ -1717,7 +1756,7 @@
     }, 
     {
       "op": "BatchNorm", 
-      "name": "invertedresidual5_batchnorm2_fwd", 
+      "name": "stage2_expandedconv2_linear_batchnorm0_fwd", 
       "attrs": {
         "axis": "1", 
         "eps": "1e-05", 
@@ -1729,23 +1768,23 @@
     }, 
     {
       "op": "elemwise_add", 
-      "name": "invertedresidual5_elemwise_add0", 
+      "name": "stage2_expandedconv2_elemwise_add0", 
       "inputs": [[148, 0, 0], [125, 0, 0]]
     }, 
     {
       "op": "null", 
-      "name": "invertedresidual6_conv0_weight", 
+      "name": "stage3_0_expandedconv0_expand_conv0_weight", 
       "attrs": {
         "__dtype__": "0", 
         "__lr_mult__": "1.0", 
-        "__shape__": "(192, 0, 1, 1)", 
+        "__shape__": "(192L, 0L, 1L, 1L)", 
         "__wd_mult__": "1.0"
       }, 
       "inputs": []
     }, 
     {
       "op": "Convolution", 
-      "name": "invertedresidual6_conv0_fwd", 
+      "name": "stage3_0_expandedconv0_expand_conv0_fwd", 
       "attrs": {
         "dilate": "(1, 1)", 
         "kernel": "(1, 1)", 
@@ -1760,7 +1799,7 @@
     }, 
     {
       "op": "null", 
-      "name": "invertedresidual6_batchnorm0_gamma", 
+      "name": "stage3_0_expandedconv0_expand_batchnorm0_gamma", 
       "attrs": {
         "__dtype__": "0", 
         "__init__": "ones", 
@@ -1772,7 +1811,7 @@
     }, 
     {
       "op": "null", 
-      "name": "invertedresidual6_batchnorm0_beta", 
+      "name": "stage3_0_expandedconv0_expand_batchnorm0_beta", 
       "attrs": {
         "__dtype__": "0", 
         "__init__": "zeros", 
@@ -1784,7 +1823,7 @@
     }, 
     {
       "op": "null", 
-      "name": "invertedresidual6_batchnorm0_running_mean", 
+      "name": "stage3_0_expandedconv0_expand_batchnorm0_running_mean", 
       "attrs": {
         "__dtype__": "0", 
         "__init__": "zeros", 
@@ -1796,7 +1835,7 @@
     }, 
     {
       "op": "null", 
-      "name": "invertedresidual6_batchnorm0_running_var", 
+      "name": "stage3_0_expandedconv0_expand_batchnorm0_running_var", 
       "attrs": {
         "__dtype__": "0", 
         "__init__": "ones", 
@@ -1808,7 +1847,7 @@
     }, 
     {
       "op": "BatchNorm", 
-      "name": "invertedresidual6_batchnorm0_fwd", 
+      "name": "stage3_0_expandedconv0_expand_batchnorm0_fwd", 
       "attrs": {
         "axis": "1", 
         "eps": "1e-05", 
@@ -1819,25 +1858,28 @@
       "inputs": [[151, 0, 0], [152, 0, 0], [153, 0, 0], [154, 0, 1], [155, 0, 1]]
     }, 
     {
-      "op": "Activation", 
-      "name": "invertedresidual6_relu0_fwd", 
-      "attrs": {"act_type": "relu"}, 
+      "op": "clip", 
+      "name": "stage3_0_expandedconv0_expand_relu6_fwd", 
+      "attrs": {
+        "a_max": "6", 
+        "a_min": "0"
+      }, 
       "inputs": [[156, 0, 0]]
     }, 
     {
       "op": "null", 
-      "name": "invertedresidual6_conv1_weight", 
+      "name": "stage3_0_expandedconv0_dwise_conv0_weight", 
       "attrs": {
         "__dtype__": "0", 
         "__lr_mult__": "1.0", 
-        "__shape__": "(192, 0, 3, 3)", 
+        "__shape__": "(192L, 0L, 3L, 3L)", 
         "__wd_mult__": "1.0"
       }, 
       "inputs": []
     }, 
     {
       "op": "Convolution", 
-      "name": "invertedresidual6_conv1_fwd", 
+      "name": "stage3_0_expandedconv0_dwise_conv0_fwd", 
       "attrs": {
         "dilate": "(1, 1)", 
         "kernel": "(3, 3)", 
@@ -1852,7 +1894,7 @@
     }, 
     {
       "op": "null", 
-      "name": "invertedresidual6_batchnorm1_gamma", 
+      "name": "stage3_0_expandedconv0_dwise_batchnorm0_gamma", 
       "attrs": {
         "__dtype__": "0", 
         "__init__": "ones", 
@@ -1864,7 +1906,7 @@
     }, 
     {
       "op": "null", 
-      "name": "invertedresidual6_batchnorm1_beta", 
+      "name": "stage3_0_expandedconv0_dwise_batchnorm0_beta", 
       "attrs": {
         "__dtype__": "0", 
         "__init__": "zeros", 
@@ -1876,7 +1918,7 @@
     }, 
     {
       "op": "null", 
-      "name": "invertedresidual6_batchnorm1_running_mean", 
+      "name": "stage3_0_expandedconv0_dwise_batchnorm0_running_mean", 
       "attrs": {
         "__dtype__": "0", 
         "__init__": "zeros", 
@@ -1888,7 +1930,7 @@
     }, 
     {
       "op": "null", 
-      "name": "invertedresidual6_batchnorm1_running_var", 
+      "name": "stage3_0_expandedconv0_dwise_batchnorm0_running_var", 
       "attrs": {
         "__dtype__": "0", 
         "__init__": "ones", 
@@ -1900,7 +1942,7 @@
     }, 
     {
       "op": "BatchNorm", 
-      "name": "invertedresidual6_batchnorm1_fwd", 
+      "name": "stage3_0_expandedconv0_dwise_batchnorm0_fwd", 
       "attrs": {
         "axis": "1", 
         "eps": "1e-05", 
@@ -1911,25 +1953,28 @@
       "inputs": [[159, 0, 0], [160, 0, 0], [161, 0, 0], [162, 0, 1], [163, 0, 1]]
     }, 
     {
-      "op": "Activation", 
-      "name": "invertedresidual6_relu1_fwd", 
-      "attrs": {"act_type": "relu"}, 
+      "op": "clip", 
+      "name": "stage3_0_expandedconv0_dwise_relu6_fwd", 
+      "attrs": {
+        "a_max": "6", 
+        "a_min": "0"
+      }, 
       "inputs": [[164, 0, 0]]
     }, 
     {
       "op": "null", 
-      "name": "invertedresidual6_conv2_weight", 
+      "name": "stage3_0_expandedconv0_linear_conv0_weight", 
       "attrs": {
         "__dtype__": "0", 
         "__lr_mult__": "1.0", 
-        "__shape__": "(64, 0, 1, 1)", 
+        "__shape__": "(64L, 0L, 1L, 1L)", 
         "__wd_mult__": "1.0"
       }, 
       "inputs": []
     }, 
     {
       "op": "Convolution", 
-      "name": "invertedresidual6_conv2_fwd", 
+      "name": "stage3_0_expandedconv0_linear_conv0_fwd", 
       "attrs": {
         "dilate": "(1, 1)", 
         "kernel": "(1, 1)", 
@@ -1944,7 +1989,7 @@
     }, 
     {
       "op": "null", 
-      "name": "invertedresidual6_batchnorm2_gamma", 
+      "name": "stage3_0_expandedconv0_linear_batchnorm0_gamma", 
       "attrs": {
         "__dtype__": "0", 
         "__init__": "ones", 
@@ -1956,7 +2001,7 @@
     }, 
     {
       "op": "null", 
-      "name": "invertedresidual6_batchnorm2_beta", 
+      "name": "stage3_0_expandedconv0_linear_batchnorm0_beta", 
       "attrs": {
         "__dtype__": "0", 
         "__init__": "zeros", 
@@ -1968,7 +2013,7 @@
     }, 
     {
       "op": "null", 
-      "name": "invertedresidual6_batchnorm2_running_mean", 
+      "name": "stage3_0_expandedconv0_linear_batchnorm0_running_mean", 
       "attrs": {
         "__dtype__": "0", 
         "__init__": "zeros", 
@@ -1980,7 +2025,7 @@
     }, 
     {
       "op": "null", 
-      "name": "invertedresidual6_batchnorm2_running_var", 
+      "name": "stage3_0_expandedconv0_linear_batchnorm0_running_var", 
       "attrs": {
         "__dtype__": "0", 
         "__init__": "ones", 
@@ -1992,7 +2037,7 @@
     }, 
     {
       "op": "BatchNorm", 
-      "name": "invertedresidual6_batchnorm2_fwd", 
+      "name": "stage3_0_expandedconv0_linear_batchnorm0_fwd", 
       "attrs": {
         "axis": "1", 
         "eps": "1e-05", 
@@ -2004,18 +2049,18 @@
     }, 
     {
       "op": "null", 
-      "name": "invertedresidual7_conv0_weight", 
+      "name": "stage3_0_expandedconv1_expand_conv0_weight", 
       "attrs": {
         "__dtype__": "0", 
         "__lr_mult__": "1.0", 
-        "__shape__": "(384, 0, 1, 1)", 
+        "__shape__": "(384L, 0L, 1L, 1L)", 
         "__wd_mult__": "1.0"
       }, 
       "inputs": []
     }, 
     {
       "op": "Convolution", 
-      "name": "invertedresidual7_conv0_fwd", 
+      "name": "stage3_0_expandedconv1_expand_conv0_fwd", 
       "attrs": {
         "dilate": "(1, 1)", 
         "kernel": "(1, 1)", 
@@ -2030,7 +2075,7 @@
     }, 
     {
       "op": "null", 
-      "name": "invertedresidual7_batchnorm0_gamma", 
+      "name": "stage3_0_expandedconv1_expand_batchnorm0_gamma", 
       "attrs": {
         "__dtype__": "0", 
         "__init__": "ones", 
@@ -2042,7 +2087,7 @@
     }, 
     {
       "op": "null", 
-      "name": "invertedresidual7_batchnorm0_beta", 
+      "name": "stage3_0_expandedconv1_expand_batchnorm0_beta", 
       "attrs": {
         "__dtype__": "0", 
         "__init__": "zeros", 
@@ -2054,7 +2099,7 @@
     }, 
     {
       "op": "null", 
-      "name": "invertedresidual7_batchnorm0_running_mean", 
+      "name": "stage3_0_expandedconv1_expand_batchnorm0_running_mean", 
       "attrs": {
         "__dtype__": "0", 
         "__init__": "zeros", 
@@ -2066,7 +2111,7 @@
     }, 
     {
       "op": "null", 
-      "name": "invertedresidual7_batchnorm0_running_var", 
+      "name": "stage3_0_expandedconv1_expand_batchnorm0_running_var", 
       "attrs": {
         "__dtype__": "0", 
         "__init__": "ones", 
@@ -2078,7 +2123,7 @@
     }, 
     {
       "op": "BatchNorm", 
-      "name": "invertedresidual7_batchnorm0_fwd", 
+      "name": "stage3_0_expandedconv1_expand_batchnorm0_fwd", 
       "attrs": {
         "axis": "1", 
         "eps": "1e-05", 
@@ -2089,25 +2134,28 @@
       "inputs": [[174, 0, 0], [175, 0, 0], [176, 0, 0], [177, 0, 1], [178, 0, 1]]
     }, 
     {
-      "op": "Activation", 
-      "name": "invertedresidual7_relu0_fwd", 
-      "attrs": {"act_type": "relu"}, 
+      "op": "clip", 
+      "name": "stage3_0_expandedconv1_expand_relu6_fwd", 
+      "attrs": {
+        "a_max": "6", 
+        "a_min": "0"
+      }, 
       "inputs": [[179, 0, 0]]
     }, 
     {
       "op": "null", 
-      "name": "invertedresidual7_conv1_weight", 
+      "name": "stage3_0_expandedconv1_dwise_conv0_weight", 
       "attrs": {
         "__dtype__": "0", 
         "__lr_mult__": "1.0", 
-        "__shape__": "(384, 0, 3, 3)", 
+        "__shape__": "(384L, 0L, 3L, 3L)", 
         "__wd_mult__": "1.0"
       }, 
       "inputs": []
     }, 
     {
       "op": "Convolution", 
-      "name": "invertedresidual7_conv1_fwd", 
+      "name": "stage3_0_expandedconv1_dwise_conv0_fwd", 
       "attrs": {
         "dilate": "(1, 1)", 
         "kernel": "(3, 3)", 
@@ -2122,7 +2170,7 @@
     }, 
     {
       "op": "null", 
-      "name": "invertedresidual7_batchnorm1_gamma", 
+      "name": "stage3_0_expandedconv1_dwise_batchnorm0_gamma", 
       "attrs": {
         "__dtype__": "0", 
         "__init__": "ones", 
@@ -2134,7 +2182,7 @@
     }, 
     {
       "op": "null", 
-      "name": "invertedresidual7_batchnorm1_beta", 
+      "name": "stage3_0_expandedconv1_dwise_batchnorm0_beta", 
       "attrs": {
         "__dtype__": "0", 
         "__init__": "zeros", 
@@ -2146,7 +2194,7 @@
     }, 
     {
       "op": "null", 
-      "name": "invertedresidual7_batchnorm1_running_mean", 
+      "name": "stage3_0_expandedconv1_dwise_batchnorm0_running_mean", 
       "attrs": {
         "__dtype__": "0", 
         "__init__": "zeros", 
@@ -2158,7 +2206,7 @@
     }, 
     {
       "op": "null", 
-      "name": "invertedresidual7_batchnorm1_running_var", 
+      "name": "stage3_0_expandedconv1_dwise_batchnorm0_running_var", 
       "attrs": {
         "__dtype__": "0", 
         "__init__": "ones", 
@@ -2170,7 +2218,7 @@
     }, 
     {
       "op": "BatchNorm", 
-      "name": "invertedresidual7_batchnorm1_fwd", 
+      "name": "stage3_0_expandedconv1_dwise_batchnorm0_fwd", 
       "attrs": {
         "axis": "1", 
         "eps": "1e-05", 
@@ -2181,25 +2229,28 @@
       "inputs": [[182, 0, 0], [183, 0, 0], [184, 0, 0], [185, 0, 1], [186, 0, 1]]
     }, 
     {
-      "op": "Activation", 
-      "name": "invertedresidual7_relu1_fwd", 
-      "attrs": {"act_type": "relu"}, 
+      "op": "clip", 
+      "name": "stage3_0_expandedconv1_dwise_relu6_fwd", 
+      "attrs": {
+        "a_max": "6", 
+        "a_min": "0"
+      }, 
       "inputs": [[187, 0, 0]]
     }, 
     {
       "op": "null", 
-      "name": "invertedresidual7_conv2_weight", 
+      "name": "stage3_0_expandedconv1_linear_conv0_weight", 
       "attrs": {
         "__dtype__": "0", 
         "__lr_mult__": "1.0", 
-        "__shape__": "(64, 0, 1, 1)", 
+        "__shape__": "(64L, 0L, 1L, 1L)", 
         "__wd_mult__": "1.0"
       }, 
       "inputs": []
     }, 
     {
       "op": "Convolution", 
-      "name": "invertedresidual7_conv2_fwd", 
+      "name": "stage3_0_expandedconv1_linear_conv0_fwd", 
       "attrs": {
         "dilate": "(1, 1)", 
         "kernel": "(1, 1)", 
@@ -2214,7 +2265,7 @@
     }, 
     {
       "op": "null", 
-      "name": "invertedresidual7_batchnorm2_gamma", 
+      "name": "stage3_0_expandedconv1_linear_batchnorm0_gamma", 
       "attrs": {
         "__dtype__": "0", 
         "__init__": "ones", 
@@ -2226,7 +2277,7 @@
     }, 
     {
       "op": "null", 
-      "name": "invertedresidual7_batchnorm2_beta", 
+      "name": "stage3_0_expandedconv1_linear_batchnorm0_beta", 
       "attrs": {
         "__dtype__": "0", 
         "__init__": "zeros", 
@@ -2238,7 +2289,7 @@
     }, 
     {
       "op": "null", 
-      "name": "invertedresidual7_batchnorm2_running_mean", 
+      "name": "stage3_0_expandedconv1_linear_batchnorm0_running_mean", 
       "attrs": {
         "__dtype__": "0", 
         "__init__": "zeros", 
@@ -2250,7 +2301,7 @@
     }, 
     {
       "op": "null", 
-      "name": "invertedresidual7_batchnorm2_running_var", 
+      "name": "stage3_0_expandedconv1_linear_batchnorm0_running_var", 
       "attrs": {
         "__dtype__": "0", 
         "__init__": "ones", 
@@ -2262,7 +2313,7 @@
     }, 
     {
       "op": "BatchNorm", 
-      "name": "invertedresidual7_batchnorm2_fwd", 
+      "name": "stage3_0_expandedconv1_linear_batchnorm0_fwd", 
       "attrs": {
         "axis": "1", 
         "eps": "1e-05", 
@@ -2274,23 +2325,23 @@
     }, 
     {
       "op": "elemwise_add", 
-      "name": "invertedresidual7_elemwise_add0", 
+      "name": "stage3_0_expandedconv1_elemwise_add0", 
       "inputs": [[195, 0, 0], [172, 0, 0]]
     }, 
     {
       "op": "null", 
-      "name": "invertedresidual8_conv0_weight", 
+      "name": "stage3_0_expandedconv2_expand_conv0_weight", 
       "attrs": {
         "__dtype__": "0", 
         "__lr_mult__": "1.0", 
-        "__shape__": "(384, 0, 1, 1)", 
+        "__shape__": "(384L, 0L, 1L, 1L)", 
         "__wd_mult__": "1.0"
       }, 
       "inputs": []
     }, 
     {
       "op": "Convolution", 
-      "name": "invertedresidual8_conv0_fwd", 
+      "name": "stage3_0_expandedconv2_expand_conv0_fwd", 
       "attrs": {
         "dilate": "(1, 1)", 
         "kernel": "(1, 1)", 
@@ -2305,7 +2356,7 @@
     }, 
     {
       "op": "null", 
-      "name": "invertedresidual8_batchnorm0_gamma", 
+      "name": "stage3_0_expandedconv2_expand_batchnorm0_gamma", 
       "attrs": {
         "__dtype__": "0", 
         "__init__": "ones", 
@@ -2317,7 +2368,7 @@
     }, 
     {
       "op": "null", 
-      "name": "invertedresidual8_batchnorm0_beta", 
+      "name": "stage3_0_expandedconv2_expand_batchnorm0_beta", 
       "attrs": {
         "__dtype__": "0", 
         "__init__": "zeros", 
@@ -2329,7 +2380,7 @@
     }, 
     {
       "op": "null", 
-      "name": "invertedresidual8_batchnorm0_running_mean", 
+      "name": "stage3_0_expandedconv2_expand_batchnorm0_running_mean", 
       "attrs": {
         "__dtype__": "0", 
         "__init__": "zeros", 
@@ -2341,7 +2392,7 @@
     }, 
     {
       "op": "null", 
-      "name": "invertedresidual8_batchnorm0_running_var", 
+      "name": "stage3_0_expandedconv2_expand_batchnorm0_running_var", 
       "attrs": {
         "__dtype__": "0", 
         "__init__": "ones", 
@@ -2353,7 +2404,7 @@
     }, 
     {
       "op": "BatchNorm", 
-      "name": "invertedresidual8_batchnorm0_fwd", 
+      "name": "stage3_0_expandedconv2_expand_batchnorm0_fwd", 
       "attrs": {
         "axis": "1", 
         "eps": "1e-05", 
@@ -2364,25 +2415,28 @@
       "inputs": [[198, 0, 0], [199, 0, 0], [200, 0, 0], [201, 0, 1], [202, 0, 1]]
     }, 
     {
-      "op": "Activation", 
-      "name": "invertedresidual8_relu0_fwd", 
-      "attrs": {"act_type": "relu"}, 
+      "op": "clip", 
+      "name": "stage3_0_expandedconv2_expand_relu6_fwd", 
+      "attrs": {
+        "a_max": "6", 
+        "a_min": "0"
+      }, 
       "inputs": [[203, 0, 0]]
     }, 
     {
       "op": "null", 
-      "name": "invertedresidual8_conv1_weight", 
+      "name": "stage3_0_expandedconv2_dwise_conv0_weight", 
       "attrs": {
         "__dtype__": "0", 
         "__lr_mult__": "1.0", 
-        "__shape__": "(384, 0, 3, 3)", 
+        "__shape__": "(384L, 0L, 3L, 3L)", 
         "__wd_mult__": "1.0"
       }, 
       "inputs": []
     }, 
     {
       "op": "Convolution", 
-      "name": "invertedresidual8_conv1_fwd", 
+      "name": "stage3_0_expandedconv2_dwise_conv0_fwd", 
       "attrs": {
         "dilate": "(1, 1)", 
         "kernel": "(3, 3)", 
@@ -2397,7 +2451,7 @@
     }, 
     {
       "op": "null", 
-      "name": "invertedresidual8_batchnorm1_gamma", 
+      "name": "stage3_0_expandedconv2_dwise_batchnorm0_gamma", 
       "attrs": {
         "__dtype__": "0", 
         "__init__": "ones", 
@@ -2409,7 +2463,7 @@
     }, 
     {
       "op": "null", 
-      "name": "invertedresidual8_batchnorm1_beta", 
+      "name": "stage3_0_expandedconv2_dwise_batchnorm0_beta", 
       "attrs": {
         "__dtype__": "0", 
         "__init__": "zeros", 
@@ -2421,7 +2475,7 @@
     }, 
     {
       "op": "null", 
-      "name": "invertedresidual8_batchnorm1_running_mean", 
+      "name": "stage3_0_expandedconv2_dwise_batchnorm0_running_mean", 
       "attrs": {
         "__dtype__": "0", 
         "__init__": "zeros", 
@@ -2433,7 +2487,7 @@
     }, 
     {
       "op": "null", 
-      "name": "invertedresidual8_batchnorm1_running_var", 
+      "name": "stage3_0_expandedconv2_dwise_batchnorm0_running_var", 
       "attrs": {
         "__dtype__": "0", 
         "__init__": "ones", 
@@ -2445,7 +2499,7 @@
     }, 
     {
       "op": "BatchNorm", 
-      "name": "invertedresidual8_batchnorm1_fwd", 
+      "name": "stage3_0_expandedconv2_dwise_batchnorm0_fwd", 
       "attrs": {
         "axis": "1", 
         "eps": "1e-05", 
@@ -2456,25 +2510,28 @@
       "inputs": [[206, 0, 0], [207, 0, 0], [208, 0, 0], [209, 0, 1], [210, 0, 1]]
     }, 
     {
-      "op": "Activation", 
-      "name": "invertedresidual8_relu1_fwd", 
-      "attrs": {"act_type": "relu"}, 
+      "op": "clip", 
+      "name": "stage3_0_expandedconv2_dwise_relu6_fwd", 
+      "attrs": {
+        "a_max": "6", 
+        "a_min": "0"
+      }, 
       "inputs": [[211, 0, 0]]
     }, 
     {
       "op": "null", 
-      "name": "invertedresidual8_conv2_weight", 
+      "name": "stage3_0_expandedconv2_linear_conv0_weight", 
       "attrs": {
         "__dtype__": "0", 
         "__lr_mult__": "1.0", 
-        "__shape__": "(64, 0, 1, 1)", 
+        "__shape__": "(64L, 0L, 1L, 1L)", 
         "__wd_mult__": "1.0"
       }, 
       "inputs": []
     }, 
     {
       "op": "Convolution", 
-      "name": "invertedresidual8_conv2_fwd", 
+      "name": "stage3_0_expandedconv2_linear_conv0_fwd", 
       "attrs": {
         "dilate": "(1, 1)", 
         "kernel": "(1, 1)", 
@@ -2489,7 +2546,7 @@
     }, 
     {
       "op": "null", 
-      "name": "invertedresidual8_batchnorm2_gamma", 
+      "name": "stage3_0_expandedconv2_linear_batchnorm0_gamma", 
       "attrs": {
         "__dtype__": "0", 
         "__init__": "ones", 
@@ -2501,7 +2558,7 @@
     }, 
     {
       "op": "null", 
-      "name": "invertedresidual8_batchnorm2_beta", 
+      "name": "stage3_0_expandedconv2_linear_batchnorm0_beta", 
       "attrs": {
         "__dtype__": "0", 
         "__init__": "zeros", 
@@ -2513,7 +2570,7 @@
     }, 
     {
       "op": "null", 
-      "name": "invertedresidual8_batchnorm2_running_mean", 
+      "name": "stage3_0_expandedconv2_linear_batchnorm0_running_mean", 
       "attrs": {
         "__dtype__": "0", 
         "__init__": "zeros", 
@@ -2525,7 +2582,7 @@
     }, 
     {
       "op": "null", 
-      "name": "invertedresidual8_batchnorm2_running_var", 
+      "name": "stage3_0_expandedconv2_linear_batchnorm0_running_var", 
       "attrs": {
         "__dtype__": "0", 
         "__init__": "ones", 
@@ -2537,7 +2594,7 @@
     }, 
     {
       "op": "BatchNorm", 
-      "name": "invertedresidual8_batchnorm2_fwd", 
+      "name": "stage3_0_expandedconv2_linear_batchnorm0_fwd", 
       "attrs": {
         "axis": "1", 
         "eps": "1e-05", 
@@ -2549,23 +2606,23 @@
     }, 
     {
       "op": "elemwise_add", 
-      "name": "invertedresidual8_elemwise_add0", 
+      "name": "stage3_0_expandedconv2_elemwise_add0", 
       "inputs": [[219, 0, 0], [196, 0, 0]]
     }, 
     {
       "op": "null", 
-      "name": "invertedresidual9_conv0_weight", 
+      "name": "stage3_0_expandedconv3_expand_conv0_weight", 
       "attrs": {
         "__dtype__": "0", 
         "__lr_mult__": "1.0", 
-        "__shape__": "(384, 0, 1, 1)", 
+        "__shape__": "(384L, 0L, 1L, 1L)", 
         "__wd_mult__": "1.0"
       }, 
       "inputs": []
     }, 
     {
       "op": "Convolution", 
-      "name": "invertedresidual9_conv0_fwd", 
+      "name": "stage3_0_expandedconv3_expand_conv0_fwd", 
       "attrs": {
         "dilate": "(1, 1)", 
         "kernel": "(1, 1)", 
@@ -2580,7 +2637,7 @@
     }, 
     {
       "op": "null", 
-      "name": "invertedresidual9_batchnorm0_gamma", 
+      "name": "stage3_0_expandedconv3_expand_batchnorm0_gamma", 
       "attrs": {
         "__dtype__": "0", 
         "__init__": "ones", 
@@ -2592,7 +2649,7 @@
     }, 
     {
       "op": "null", 
-      "name": "invertedresidual9_batchnorm0_beta", 
+      "name": "stage3_0_expandedconv3_expand_batchnorm0_beta", 
       "attrs": {
         "__dtype__": "0", 
         "__init__": "zeros", 
@@ -2604,7 +2661,7 @@
     }, 
     {
       "op": "null", 
-      "name": "invertedresidual9_batchnorm0_running_mean", 
+      "name": "stage3_0_expandedconv3_expand_batchnorm0_running_mean", 
       "attrs": {
         "__dtype__": "0", 
         "__init__": "zeros", 
@@ -2616,7 +2673,7 @@
     }, 
     {
       "op": "null", 
-      "name": "invertedresidual9_batchnorm0_running_var", 
+      "name": "stage3_0_expandedconv3_expand_batchnorm0_running_var", 
       "attrs": {
         "__dtype__": "0", 
         "__init__": "ones", 
@@ -2628,7 +2685,7 @@
     }, 
     {
       "op": "BatchNorm", 
-      "name": "invertedresidual9_batchnorm0_fwd", 
+      "name": "stage3_0_expandedconv3_expand_batchnorm0_fwd", 
       "attrs": {
         "axis": "1", 
         "eps": "1e-05", 
@@ -2639,25 +2696,28 @@
       "inputs": [[222, 0, 0], [223, 0, 0], [224, 0, 0], [225, 0, 1], [226, 0, 1]]
     }, 
     {
-      "op": "Activation", 
-      "name": "invertedresidual9_relu0_fwd", 
-      "attrs": {"act_type": "relu"}, 
+      "op": "clip", 
+      "name": "stage3_0_expandedconv3_expand_relu6_fwd", 
+      "attrs": {
+        "a_max": "6", 
+        "a_min": "0"
+      }, 
       "inputs": [[227, 0, 0]]
     }, 
     {
       "op": "null", 
-      "name": "invertedresidual9_conv1_weight", 
+      "name": "stage3_0_expandedconv3_dwise_conv0_weight", 
       "attrs": {
         "__dtype__": "0", 
         "__lr_mult__": "1.0", 
-        "__shape__": "(384, 0, 3, 3)", 
+        "__shape__": "(384L, 0L, 3L, 3L)", 
         "__wd_mult__": "1.0"
       }, 
       "inputs": []
     }, 
     {
       "op": "Convolution", 
-      "name": "invertedresidual9_conv1_fwd", 
+      "name": "stage3_0_expandedconv3_dwise_conv0_fwd", 
       "attrs": {
         "dilate": "(1, 1)", 
         "kernel": "(3, 3)", 
@@ -2672,7 +2732,7 @@
     }, 
     {
       "op": "null", 
-      "name": "invertedresidual9_batchnorm1_gamma", 
+      "name": "stage3_0_expandedconv3_dwise_batchnorm0_gamma", 
       "attrs": {
         "__dtype__": "0", 
         "__init__": "ones", 
@@ -2684,7 +2744,7 @@
     }, 
     {
       "op": "null", 
-      "name": "invertedresidual9_batchnorm1_beta", 
+      "name": "stage3_0_expandedconv3_dwise_batchnorm0_beta", 
       "attrs": {
         "__dtype__": "0", 
         "__init__": "zeros", 
@@ -2696,7 +2756,7 @@
     }, 
     {
       "op": "null", 
-      "name": "invertedresidual9_batchnorm1_running_mean", 
+      "name": "stage3_0_expandedconv3_dwise_batchnorm0_running_mean", 
       "attrs": {
         "__dtype__": "0", 
         "__init__": "zeros", 
@@ -2708,7 +2768,7 @@
     }, 
     {
       "op": "null", 
-      "name": "invertedresidual9_batchnorm1_running_var", 
+      "name": "stage3_0_expandedconv3_dwise_batchnorm0_running_var", 
       "attrs": {
         "__dtype__": "0", 
         "__init__": "ones", 
@@ -2720,7 +2780,7 @@
     }, 
     {
       "op": "BatchNorm", 
-      "name": "invertedresidual9_batchnorm1_fwd", 
+      "name": "stage3_0_expandedconv3_dwise_batchnorm0_fwd", 
       "attrs": {
         "axis": "1", 
         "eps": "1e-05", 
@@ -2731,25 +2791,28 @@
       "inputs": [[230, 0, 0], [231, 0, 0], [232, 0, 0], [233, 0, 1], [234, 0, 1]]
     }, 
     {
-      "op": "Activation", 
-      "name": "invertedresidual9_relu1_fwd", 
-      "attrs": {"act_type": "relu"}, 
+      "op": "clip", 
+      "name": "stage3_0_expandedconv3_dwise_relu6_fwd", 
+      "attrs": {
+        "a_max": "6", 
+        "a_min": "0"
+      }, 
       "inputs": [[235, 0, 0]]
     }, 
     {
       "op": "null", 
-      "name": "invertedresidual9_conv2_weight", 
+      "name": "stage3_0_expandedconv3_linear_conv0_weight", 
       "attrs": {
         "__dtype__": "0", 
         "__lr_mult__": "1.0", 
-        "__shape__": "(64, 0, 1, 1)", 
+        "__shape__": "(64L, 0L, 1L, 1L)", 
         "__wd_mult__": "1.0"
       }, 
       "inputs": []
     }, 
     {
       "op": "Convolution", 
-      "name": "invertedresidual9_conv2_fwd", 
+      "name": "stage3_0_expandedconv3_linear_conv0_fwd", 
       "attrs": {
         "dilate": "(1, 1)", 
         "kernel": "(1, 1)", 
@@ -2764,7 +2827,7 @@
     }, 
     {
       "op": "null", 
-      "name": "invertedresidual9_batchnorm2_gamma", 
+      "name": "stage3_0_expandedconv3_linear_batchnorm0_gamma", 
       "attrs": {
         "__dtype__": "0", 
         "__init__": "ones", 
@@ -2776,7 +2839,7 @@
     }, 
     {
       "op": "null", 
-      "name": "invertedresidual9_batchnorm2_beta", 
+      "name": "stage3_0_expandedconv3_linear_batchnorm0_beta", 
       "attrs": {
         "__dtype__": "0", 
         "__init__": "zeros", 
@@ -2788,7 +2851,7 @@
     }, 
     {
       "op": "null", 
-      "name": "invertedresidual9_batchnorm2_running_mean", 
+      "name": "stage3_0_expandedconv3_linear_batchnorm0_running_mean", 
       "attrs": {
         "__dtype__": "0", 
         "__init__": "zeros", 
@@ -2800,7 +2863,7 @@
     }, 
     {
       "op": "null", 
-      "name": "invertedresidual9_batchnorm2_running_var", 
+      "name": "stage3_0_expandedconv3_linear_batchnorm0_running_var", 
       "attrs": {
         "__dtype__": "0", 
         "__init__": "ones", 
@@ -2812,7 +2875,7 @@
     }, 
     {
       "op": "BatchNorm", 
-      "name": "invertedresidual9_batchnorm2_fwd", 
+      "name": "stage3_0_expandedconv3_linear_batchnorm0_fwd", 
       "attrs": {
         "axis": "1", 
         "eps": "1e-05", 
@@ -2824,23 +2887,23 @@
     }, 
     {
       "op": "elemwise_add", 
-      "name": "invertedresidual9_elemwise_add0", 
+      "name": "stage3_0_expandedconv3_elemwise_add0", 
       "inputs": [[243, 0, 0], [220, 0, 0]]
     }, 
     {
       "op": "null", 
-      "name": "invertedresidual10_conv0_weight", 
+      "name": "stage3_1_expandedconv0_expand_conv0_weight", 
       "attrs": {
         "__dtype__": "0", 
         "__lr_mult__": "1.0", 
-        "__shape__": "(384, 0, 1, 1)", 
+        "__shape__": "(384L, 0L, 1L, 1L)", 
         "__wd_mult__": "1.0"
       }, 
       "inputs": []
     }, 
     {
       "op": "Convolution", 
-      "name": "invertedresidual10_conv0_fwd", 
+      "name": "stage3_1_expandedconv0_expand_conv0_fwd", 
       "attrs": {
         "dilate": "(1, 1)", 
         "kernel": "(1, 1)", 
@@ -2855,7 +2918,7 @@
     }, 
     {
       "op": "null", 
-      "name": "invertedresidual10_batchnorm0_gamma", 
+      "name": "stage3_1_expandedconv0_expand_batchnorm0_gamma", 
       "attrs": {
         "__dtype__": "0", 
         "__init__": "ones", 
@@ -2867,7 +2930,7 @@
     }, 
     {
       "op": "null", 
-      "name": "invertedresidual10_batchnorm0_beta", 
+      "name": "stage3_1_expandedconv0_expand_batchnorm0_beta", 
       "attrs": {
         "__dtype__": "0", 
         "__init__": "zeros", 
@@ -2879,7 +2942,7 @@
     }, 
     {
       "op": "null", 
-      "name": "invertedresidual10_batchnorm0_running_mean", 
+      "name": "stage3_1_expandedconv0_expand_batchnorm0_running_mean", 
       "attrs": {
         "__dtype__": "0", 
         "__init__": "zeros", 
@@ -2891,7 +2954,7 @@
     }, 
     {
       "op": "null", 
-      "name": "invertedresidual10_batchnorm0_running_var", 
+      "name": "stage3_1_expandedconv0_expand_batchnorm0_running_var", 
       "attrs": {
         "__dtype__": "0", 
         "__init__": "ones", 
@@ -2903,7 +2966,7 @@
     }, 
     {
       "op": "BatchNorm", 
-      "name": "invertedresidual10_batchnorm0_fwd", 
+      "name": "stage3_1_expandedconv0_expand_batchnorm0_fwd", 
       "attrs": {
         "axis": "1", 
         "eps": "1e-05", 
@@ -2914,25 +2977,28 @@
       "inputs": [[246, 0, 0], [247, 0, 0], [248, 0, 0], [249, 0, 1], [250, 0, 1]]
     }, 
     {
-      "op": "Activation", 
-      "name": "invertedresidual10_relu0_fwd", 
-      "attrs": {"act_type": "relu"}, 
+      "op": "clip", 
+      "name": "stage3_1_expandedconv0_expand_relu6_fwd", 
+      "attrs": {
+        "a_max": "6", 
+        "a_min": "0"
+      }, 
       "inputs": [[251, 0, 0]]
     }, 
     {
       "op": "null", 
-      "name": "invertedresidual10_conv1_weight", 
+      "name": "stage3_1_expandedconv0_dwise_conv0_weight", 
       "attrs": {
         "__dtype__": "0", 
         "__lr_mult__": "1.0", 
-        "__shape__": "(384, 0, 3, 3)", 
+        "__shape__": "(384L, 0L, 3L, 3L)", 
         "__wd_mult__": "1.0"
       }, 
       "inputs": []
     }, 
     {
       "op": "Convolution", 
-      "name": "invertedresidual10_conv1_fwd", 
+      "name": "stage3_1_expandedconv0_dwise_conv0_fwd", 
       "attrs": {
         "dilate": "(1, 1)", 
         "kernel": "(3, 3)", 
@@ -2947,7 +3013,7 @@
     }, 
     {
       "op": "null", 
-      "name": "invertedresidual10_batchnorm1_gamma", 
+      "name": "stage3_1_expandedconv0_dwise_batchnorm0_gamma", 
       "attrs": {
         "__dtype__": "0", 
         "__init__": "ones", 
@@ -2959,7 +3025,7 @@
     }, 
     {
       "op": "null", 
-      "name": "invertedresidual10_batchnorm1_beta", 
+      "name": "stage3_1_expandedconv0_dwise_batchnorm0_beta", 
       "attrs": {
         "__dtype__": "0", 
         "__init__": "zeros", 
@@ -2971,7 +3037,7 @@
     }, 
     {
       "op": "null", 
-      "name": "invertedresidual10_batchnorm1_running_mean", 
+      "name": "stage3_1_expandedconv0_dwise_batchnorm0_running_mean", 
       "attrs": {
         "__dtype__": "0", 
         "__init__": "zeros", 
@@ -2983,7 +3049,7 @@
     }, 
     {
       "op": "null", 
-      "name": "invertedresidual10_batchnorm1_running_var", 
+      "name": "stage3_1_expandedconv0_dwise_batchnorm0_running_var", 
       "attrs": {
         "__dtype__": "0", 
         "__init__": "ones", 
@@ -2995,7 +3061,7 @@
     }, 
     {
       "op": "BatchNorm", 
-      "name": "invertedresidual10_batchnorm1_fwd", 
+      "name": "stage3_1_expandedconv0_dwise_batchnorm0_fwd", 
       "attrs": {
         "axis": "1", 
         "eps": "1e-05", 
@@ -3006,25 +3072,28 @@
       "inputs": [[254, 0, 0], [255, 0, 0], [256, 0, 0], [257, 0, 1], [258, 0, 1]]
     }, 
     {
-      "op": "Activation", 
-      "name": "invertedresidual10_relu1_fwd", 
-      "attrs": {"act_type": "relu"}, 
+      "op": "clip", 
+      "name": "stage3_1_expandedconv0_dwise_relu6_fwd", 
+      "attrs": {
+        "a_max": "6", 
+        "a_min": "0"
+      }, 
       "inputs": [[259, 0, 0]]
     }, 
     {
       "op": "null", 
-      "name": "invertedresidual10_conv2_weight", 
+      "name": "stage3_1_expandedconv0_linear_conv0_weight", 
       "attrs": {
         "__dtype__": "0", 
         "__lr_mult__": "1.0", 
-        "__shape__": "(96, 0, 1, 1)", 
+        "__shape__": "(96L, 0L, 1L, 1L)", 
         "__wd_mult__": "1.0"
       }, 
       "inputs": []
     }, 
     {
       "op": "Convolution", 
-      "name": "invertedresidual10_conv2_fwd", 
+      "name": "stage3_1_expandedconv0_linear_conv0_fwd", 
       "attrs": {
         "dilate": "(1, 1)", 
         "kernel": "(1, 1)", 
@@ -3039,7 +3108,7 @@
     }, 
     {
       "op": "null", 
-      "name": "invertedresidual10_batchnorm2_gamma", 
+      "name": "stage3_1_expandedconv0_linear_batchnorm0_gamma", 
       "attrs": {
         "__dtype__": "0", 
         "__init__": "ones", 
@@ -3051,7 +3120,7 @@
     }, 
     {
       "op": "null", 
-      "name": "invertedresidual10_batchnorm2_beta", 
+      "name": "stage3_1_expandedconv0_linear_batchnorm0_beta", 
       "attrs": {
         "__dtype__": "0", 
         "__init__": "zeros", 
@@ -3063,7 +3132,7 @@
     }, 
     {
       "op": "null", 
-      "name": "invertedresidual10_batchnorm2_running_mean", 
+      "name": "stage3_1_expandedconv0_linear_batchnorm0_running_mean", 
       "attrs": {
         "__dtype__": "0", 
         "__init__": "zeros", 
@@ -3075,7 +3144,7 @@
     }, 
     {
       "op": "null", 
-      "name": "invertedresidual10_batchnorm2_running_var", 
+      "name": "stage3_1_expandedconv0_linear_batchnorm0_running_var", 
       "attrs": {
         "__dtype__": "0", 
         "__init__": "ones", 
@@ -3087,7 +3156,7 @@
     }, 
     {
       "op": "BatchNorm", 
-      "name": "invertedresidual10_batchnorm2_fwd", 
+      "name": "stage3_1_expandedconv0_linear_batchnorm0_fwd", 
       "attrs": {
         "axis": "1", 
         "eps": "1e-05", 
@@ -3099,18 +3168,18 @@
     }, 
     {
       "op": "null", 
-      "name": "invertedresidual11_conv0_weight", 
+      "name": "stage3_1_expandedconv1_expand_conv0_weight", 
       "attrs": {
         "__dtype__": "0", 
         "__lr_mult__": "1.0", 
-        "__shape__": "(576, 0, 1, 1)", 
+        "__shape__": "(576L, 0L, 1L, 1L)", 
         "__wd_mult__": "1.0"
       }, 
       "inputs": []
     }, 
     {
       "op": "Convolution", 
-      "name": "invertedresidual11_conv0_fwd", 
+      "name": "stage3_1_expandedconv1_expand_conv0_fwd", 
       "attrs": {
         "dilate": "(1, 1)", 
         "kernel": "(1, 1)", 
@@ -3125,7 +3194,7 @@
     }, 
     {
       "op": "null", 
-      "name": "invertedresidual11_batchnorm0_gamma", 
+      "name": "stage3_1_expandedconv1_expand_batchnorm0_gamma", 
       "attrs": {
         "__dtype__": "0", 
         "__init__": "ones", 
@@ -3137,7 +3206,7 @@
     }, 
     {
       "op": "null", 
-      "name": "invertedresidual11_batchnorm0_beta", 
+      "name": "stage3_1_expandedconv1_expand_batchnorm0_beta", 
       "attrs": {
         "__dtype__": "0", 
         "__init__": "zeros", 
@@ -3149,7 +3218,7 @@
     }, 
     {
       "op": "null", 
-      "name": "invertedresidual11_batchnorm0_running_mean", 
+      "name": "stage3_1_expandedconv1_expand_batchnorm0_running_mean", 
       "attrs": {
         "__dtype__": "0", 
         "__init__": "zeros", 
@@ -3161,7 +3230,7 @@
     }, 
     {
       "op": "null", 
-      "name": "invertedresidual11_batchnorm0_running_var", 
+      "name": "stage3_1_expandedconv1_expand_batchnorm0_running_var", 
       "attrs": {
         "__dtype__": "0", 
         "__init__": "ones", 
@@ -3173,7 +3242,7 @@
     }, 
     {
       "op": "BatchNorm", 
-      "name": "invertedresidual11_batchnorm0_fwd", 
+      "name": "stage3_1_expandedconv1_expand_batchnorm0_fwd", 
       "attrs": {
         "axis": "1", 
         "eps": "1e-05", 
@@ -3184,25 +3253,28 @@
       "inputs": [[269, 0, 0], [270, 0, 0], [271, 0, 0], [272, 0, 1], [273, 0, 1]]
     }, 
     {
-      "op": "Activation", 
-      "name": "invertedresidual11_relu0_fwd", 
-      "attrs": {"act_type": "relu"}, 
+      "op": "clip", 
+      "name": "stage3_1_expandedconv1_expand_relu6_fwd", 
+      "attrs": {
+        "a_max": "6", 
+        "a_min": "0"
+      }, 
       "inputs": [[274, 0, 0]]
     }, 
     {
       "op": "null", 
-      "name": "invertedresidual11_conv1_weight", 
+      "name": "stage3_1_expandedconv1_dwise_conv0_weight", 
       "attrs": {
         "__dtype__": "0", 
         "__lr_mult__": "1.0", 
-        "__shape__": "(576, 0, 3, 3)", 
+        "__shape__": "(576L, 0L, 3L, 3L)", 
         "__wd_mult__": "1.0"
       }, 
       "inputs": []
     }, 
     {
       "op": "Convolution", 
-      "name": "invertedresidual11_conv1_fwd", 
+      "name": "stage3_1_expandedconv1_dwise_conv0_fwd", 
       "attrs": {
         "dilate": "(1, 1)", 
         "kernel": "(3, 3)", 
@@ -3217,7 +3289,7 @@
     }, 
     {
       "op": "null", 
-      "name": "invertedresidual11_batchnorm1_gamma", 
+      "name": "stage3_1_expandedconv1_dwise_batchnorm0_gamma", 
       "attrs": {
         "__dtype__": "0", 
         "__init__": "ones", 
@@ -3229,7 +3301,7 @@
     }, 
     {
       "op": "null", 
-      "name": "invertedresidual11_batchnorm1_beta", 
+      "name": "stage3_1_expandedconv1_dwise_batchnorm0_beta", 
       "attrs": {
         "__dtype__": "0", 
         "__init__": "zeros", 
@@ -3241,7 +3313,7 @@
     }, 
     {
       "op": "null", 
-      "name": "invertedresidual11_batchnorm1_running_mean", 
+      "name": "stage3_1_expandedconv1_dwise_batchnorm0_running_mean", 
       "attrs": {
         "__dtype__": "0", 
         "__init__": "zeros", 
@@ -3253,7 +3325,7 @@
     }, 
     {
       "op": "null", 
-      "name": "invertedresidual11_batchnorm1_running_var", 
+      "name": "stage3_1_expandedconv1_dwise_batchnorm0_running_var", 
       "attrs": {
         "__dtype__": "0", 
         "__init__": "ones", 
@@ -3265,7 +3337,7 @@
     }, 
     {
       "op": "BatchNorm", 
-      "name": "invertedresidual11_batchnorm1_fwd", 
+      "name": "stage3_1_expandedconv1_dwise_batchnorm0_fwd", 
       "attrs": {
         "axis": "1", 
         "eps": "1e-05", 
@@ -3276,25 +3348,28 @@
       "inputs": [[277, 0, 0], [278, 0, 0], [279, 0, 0], [280, 0, 1], [281, 0, 1]]
     }, 
     {
-      "op": "Activation", 
-      "name": "invertedresidual11_relu1_fwd", 
-      "attrs": {"act_type": "relu"}, 
+      "op": "clip", 
+      "name": "stage3_1_expandedconv1_dwise_relu6_fwd", 
+      "attrs": {
+        "a_max": "6", 
+        "a_min": "0"
+      }, 
       "inputs": [[282, 0, 0]]
     }, 
     {
       "op": "null", 
-      "name": "invertedresidual11_conv2_weight", 
+      "name": "stage3_1_expandedconv1_linear_conv0_weight", 
       "attrs": {
         "__dtype__": "0", 
         "__lr_mult__": "1.0", 
-        "__shape__": "(96, 0, 1, 1)", 
+        "__shape__": "(96L, 0L, 1L, 1L)", 
         "__wd_mult__": "1.0"
       }, 
       "inputs": []
     }, 
     {
       "op": "Convolution", 
-      "name": "invertedresidual11_conv2_fwd", 
+      "name": "stage3_1_expandedconv1_linear_conv0_fwd", 
       "attrs": {
         "dilate": "(1, 1)", 
         "kernel": "(1, 1)", 
@@ -3309,7 +3384,7 @@
     }, 
     {
       "op": "null", 
-      "name": "invertedresidual11_batchnorm2_gamma", 
+      "name": "stage3_1_expandedconv1_linear_batchnorm0_gamma", 
       "attrs": {
         "__dtype__": "0", 
         "__init__": "ones", 
@@ -3321,7 +3396,7 @@
     }, 
     {
       "op": "null", 
-      "name": "invertedresidual11_batchnorm2_beta", 
+      "name": "stage3_1_expandedconv1_linear_batchnorm0_beta", 
       "attrs": {
         "__dtype__": "0", 
         "__init__": "zeros", 
@@ -3333,7 +3408,7 @@
     }, 
     {
       "op": "null", 
-      "name": "invertedresidual11_batchnorm2_running_mean", 
+      "name": "stage3_1_expandedconv1_linear_batchnorm0_running_mean", 
       "attrs": {
         "__dtype__": "0", 
         "__init__": "zeros", 
@@ -3345,7 +3420,7 @@
     }, 
     {
       "op": "null", 
-      "name": "invertedresidual11_batchnorm2_running_var", 
+      "name": "stage3_1_expandedconv1_linear_batchnorm0_running_var", 
       "attrs": {
         "__dtype__": "0", 
         "__init__": "ones", 
@@ -3357,7 +3432,7 @@
     }, 
     {
       "op": "BatchNorm", 
-      "name": "invertedresidual11_batchnorm2_fwd", 
+      "name": "stage3_1_expandedconv1_linear_batchnorm0_fwd", 
       "attrs": {
         "axis": "1", 
         "eps": "1e-05", 
@@ -3369,23 +3444,23 @@
     }, 
     {
       "op": "elemwise_add", 
-      "name": "invertedresidual11_elemwise_add0", 
+      "name": "stage3_1_expandedconv1_elemwise_add0", 
       "inputs": [[290, 0, 0], [267, 0, 0]]
     }, 
     {
       "op": "null", 
-      "name": "invertedresidual12_conv0_weight", 
+      "name": "stage3_1_expandedconv2_expand_conv0_weight", 
       "attrs": {
         "__dtype__": "0", 
         "__lr_mult__": "1.0", 
-        "__shape__": "(576, 0, 1, 1)", 
+        "__shape__": "(576L, 0L, 1L, 1L)", 
         "__wd_mult__": "1.0"
       }, 
       "inputs": []
     }, 
     {
       "op": "Convolution", 
-      "name": "invertedresidual12_conv0_fwd", 
+      "name": "stage3_1_expandedconv2_expand_conv0_fwd", 
       "attrs": {
         "dilate": "(1, 1)", 
         "kernel": "(1, 1)", 
@@ -3400,7 +3475,7 @@
     }, 
     {
       "op": "null", 
-      "name": "invertedresidual12_batchnorm0_gamma", 
+      "name": "stage3_1_expandedconv2_expand_batchnorm0_gamma", 
       "attrs": {
         "__dtype__": "0", 
         "__init__": "ones", 
@@ -3412,7 +3487,7 @@
     }, 
     {
       "op": "null", 
-      "name": "invertedresidual12_batchnorm0_beta", 
+      "name": "stage3_1_expandedconv2_expand_batchnorm0_beta", 
       "attrs": {
         "__dtype__": "0", 
         "__init__": "zeros", 
@@ -3424,7 +3499,7 @@
     }, 
     {
       "op": "null", 
-      "name": "invertedresidual12_batchnorm0_running_mean", 
+      "name": "stage3_1_expandedconv2_expand_batchnorm0_running_mean", 
       "attrs": {
         "__dtype__": "0", 
         "__init__": "zeros", 
@@ -3436,7 +3511,7 @@
     }, 
     {
       "op": "null", 
-      "name": "invertedresidual12_batchnorm0_running_var", 
+      "name": "stage3_1_expandedconv2_expand_batchnorm0_running_var", 
       "attrs": {
         "__dtype__": "0", 
         "__init__": "ones", 
@@ -3448,7 +3523,7 @@
     }, 
     {
       "op": "BatchNorm", 
-      "name": "invertedresidual12_batchnorm0_fwd", 
+      "name": "stage3_1_expandedconv2_expand_batchnorm0_fwd", 
       "attrs": {
         "axis": "1", 
         "eps": "1e-05", 
@@ -3459,25 +3534,28 @@
       "inputs": [[293, 0, 0], [294, 0, 0], [295, 0, 0], [296, 0, 1], [297, 0, 1]]
     }, 
     {
-      "op": "Activation", 
-      "name": "invertedresidual12_relu0_fwd", 
-      "attrs": {"act_type": "relu"}, 
+      "op": "clip", 
+      "name": "stage3_1_expandedconv2_expand_relu6_fwd", 
+      "attrs": {
+        "a_max": "6", 
+        "a_min": "0"
+      }, 
       "inputs": [[298, 0, 0]]
     }, 
     {
       "op": "null", 
-      "name": "invertedresidual12_conv1_weight", 
+      "name": "stage3_1_expandedconv2_dwise_conv0_weight", 
       "attrs": {
         "__dtype__": "0", 
         "__lr_mult__": "1.0", 
-        "__shape__": "(576, 0, 3, 3)", 
+        "__shape__": "(576L, 0L, 3L, 3L)", 
         "__wd_mult__": "1.0"
       }, 
       "inputs": []
     }, 
     {
       "op": "Convolution", 
-      "name": "invertedresidual12_conv1_fwd", 
+      "name": "stage3_1_expandedconv2_dwise_conv0_fwd", 
       "attrs": {
         "dilate": "(1, 1)", 
         "kernel": "(3, 3)", 
@@ -3492,7 +3570,7 @@
     }, 
     {
       "op": "null", 
-      "name": "invertedresidual12_batchnorm1_gamma", 
+      "name": "stage3_1_expandedconv2_dwise_batchnorm0_gamma", 
       "attrs": {
         "__dtype__": "0", 
         "__init__": "ones", 
@@ -3504,7 +3582,7 @@
     }, 
     {
       "op": "null", 
-      "name": "invertedresidual12_batchnorm1_beta", 
+      "name": "stage3_1_expandedconv2_dwise_batchnorm0_beta", 
       "attrs": {
         "__dtype__": "0", 
         "__init__": "zeros", 
@@ -3516,7 +3594,7 @@
     }, 
     {
       "op": "null", 
-      "name": "invertedresidual12_batchnorm1_running_mean", 
+      "name": "stage3_1_expandedconv2_dwise_batchnorm0_running_mean", 
       "attrs": {
         "__dtype__": "0", 
         "__init__": "zeros", 
@@ -3528,7 +3606,7 @@
     }, 
     {
       "op": "null", 
-      "name": "invertedresidual12_batchnorm1_running_var", 
+      "name": "stage3_1_expandedconv2_dwise_batchnorm0_running_var", 
       "attrs": {
         "__dtype__": "0", 
         "__init__": "ones", 
@@ -3540,7 +3618,7 @@
     }, 
     {
       "op": "BatchNorm", 
-      "name": "invertedresidual12_batchnorm1_fwd", 
+      "name": "stage3_1_expandedconv2_dwise_batchnorm0_fwd", 
       "attrs": {
         "axis": "1", 
         "eps": "1e-05", 
@@ -3551,25 +3629,28 @@
       "inputs": [[301, 0, 0], [302, 0, 0], [303, 0, 0], [304, 0, 1], [305, 0, 1]]
     }, 
     {
-      "op": "Activation", 
-      "name": "invertedresidual12_relu1_fwd", 
-      "attrs": {"act_type": "relu"}, 
+      "op": "clip", 
+      "name": "stage3_1_expandedconv2_dwise_relu6_fwd", 
+      "attrs": {
+        "a_max": "6", 
+        "a_min": "0"
+      }, 
       "inputs": [[306, 0, 0]]
     }, 
     {
       "op": "null", 
-      "name": "invertedresidual12_conv2_weight", 
+      "name": "stage3_1_expandedconv2_linear_conv0_weight", 
       "attrs": {
         "__dtype__": "0", 
         "__lr_mult__": "1.0", 
-        "__shape__": "(96, 0, 1, 1)", 
+        "__shape__": "(96L, 0L, 1L, 1L)", 
         "__wd_mult__": "1.0"
       }, 
       "inputs": []
     }, 
     {
       "op": "Convolution", 
-      "name": "invertedresidual12_conv2_fwd", 
+      "name": "stage3_1_expandedconv2_linear_conv0_fwd", 
       "attrs": {
         "dilate": "(1, 1)", 
         "kernel": "(1, 1)", 
@@ -3584,7 +3665,7 @@
     }, 
     {
       "op": "null", 
-      "name": "invertedresidual12_batchnorm2_gamma", 
+      "name": "stage3_1_expandedconv2_linear_batchnorm0_gamma", 
       "attrs": {
         "__dtype__": "0", 
         "__init__": "ones", 
@@ -3596,7 +3677,7 @@
     }, 
     {
       "op": "null", 
-      "name": "invertedresidual12_batchnorm2_beta", 
+      "name": "stage3_1_expandedconv2_linear_batchnorm0_beta", 
       "attrs": {
         "__dtype__": "0", 
         "__init__": "zeros", 
@@ -3608,7 +3689,7 @@
     }, 
     {
       "op": "null", 
-      "name": "invertedresidual12_batchnorm2_running_mean", 
+      "name": "stage3_1_expandedconv2_linear_batchnorm0_running_mean", 
       "attrs": {
         "__dtype__": "0", 
         "__init__": "zeros", 
@@ -3620,7 +3701,7 @@
     }, 
     {
       "op": "null", 
-      "name": "invertedresidual12_batchnorm2_running_var", 
+      "name": "stage3_1_expandedconv2_linear_batchnorm0_running_var", 
       "attrs": {
         "__dtype__": "0", 
         "__init__": "ones", 
@@ -3632,7 +3713,7 @@
     }, 
     {
       "op": "BatchNorm", 
-      "name": "invertedresidual12_batchnorm2_fwd", 
+      "name": "stage3_1_expandedconv2_linear_batchnorm0_fwd", 
       "attrs": {
         "axis": "1", 
         "eps": "1e-05", 
@@ -3644,23 +3725,23 @@
     }, 
     {
       "op": "elemwise_add", 
-      "name": "invertedresidual12_elemwise_add0", 
+      "name": "stage3_1_expandedconv2_elemwise_add0", 
       "inputs": [[314, 0, 0], [291, 0, 0]]
     }, 
     {
       "op": "null", 
-      "name": "invertedresidual13_conv0_weight", 
+      "name": "stage4_0_expandedconv0_expand_conv0_weight", 
       "attrs": {
         "__dtype__": "0", 
         "__lr_mult__": "1.0", 
-        "__shape__": "(576, 0, 1, 1)", 
+        "__shape__": "(576L, 0L, 1L, 1L)", 
         "__wd_mult__": "1.0"
       }, 
       "inputs": []
     }, 
     {
       "op": "Convolution", 
-      "name": "invertedresidual13_conv0_fwd", 
+      "name": "stage4_0_expandedconv0_expand_conv0_fwd", 
       "attrs": {
         "dilate": "(1, 1)", 
         "kernel": "(1, 1)", 
@@ -3675,7 +3756,7 @@
     }, 
     {
       "op": "null", 
-      "name": "invertedresidual13_batchnorm0_gamma", 
+      "name": "stage4_0_expandedconv0_expand_batchnorm0_gamma", 
       "attrs": {
         "__dtype__": "0", 
         "__init__": "ones", 
@@ -3687,7 +3768,7 @@
     }, 
     {
       "op": "null", 
-      "name": "invertedresidual13_batchnorm0_beta", 
+      "name": "stage4_0_expandedconv0_expand_batchnorm0_beta", 
       "attrs": {
         "__dtype__": "0", 
         "__init__": "zeros", 
@@ -3699,7 +3780,7 @@
     }, 
     {
       "op": "null", 
-      "name": "invertedresidual13_batchnorm0_running_mean", 
+      "name": "stage4_0_expandedconv0_expand_batchnorm0_running_mean", 
       "attrs": {
         "__dtype__": "0", 
         "__init__": "zeros", 
@@ -3711,7 +3792,7 @@
     }, 
     {
       "op": "null", 
-      "name": "invertedresidual13_batchnorm0_running_var", 
+      "name": "stage4_0_expandedconv0_expand_batchnorm0_running_var", 
       "attrs": {
         "__dtype__": "0", 
         "__init__": "ones", 
@@ -3723,7 +3804,7 @@
     }, 
     {
       "op": "BatchNorm", 
-      "name": "invertedresidual13_batchnorm0_fwd", 
+      "name": "stage4_0_expandedconv0_expand_batchnorm0_fwd", 
       "attrs": {
         "axis": "1", 
         "eps": "1e-05", 
@@ -3734,25 +3815,28 @@
       "inputs": [[317, 0, 0], [318, 0, 0], [319, 0, 0], [320, 0, 1], [321, 0, 1]]
     }, 
     {
-      "op": "Activation", 
-      "name": "invertedresidual13_relu0_fwd", 
-      "attrs": {"act_type": "relu"}, 
+      "op": "clip", 
+      "name": "stage4_0_expandedconv0_expand_relu6_fwd", 
+      "attrs": {
+        "a_max": "6", 
+        "a_min": "0"
+      }, 
       "inputs": [[322, 0, 0]]
     }, 
     {
       "op": "null", 
-      "name": "invertedresidual13_conv1_weight", 
+      "name": "stage4_0_expandedconv0_dwise_conv0_weight", 
       "attrs": {
         "__dtype__": "0", 
         "__lr_mult__": "1.0", 
-        "__shape__": "(576, 0, 3, 3)", 
+        "__shape__": "(576L, 0L, 3L, 3L)", 
         "__wd_mult__": "1.0"
       }, 
       "inputs": []
     }, 
     {
       "op": "Convolution", 
-      "name": "invertedresidual13_conv1_fwd", 
+      "name": "stage4_0_expandedconv0_dwise_conv0_fwd", 
       "attrs": {
         "dilate": "(1, 1)", 
         "kernel": "(3, 3)", 
@@ -3767,7 +3851,7 @@
     }, 
     {
       "op": "null", 
-      "name": "invertedresidual13_batchnorm1_gamma", 
+      "name": "stage4_0_expandedconv0_dwise_batchnorm0_gamma", 
       "attrs": {
         "__dtype__": "0", 
         "__init__": "ones", 
@@ -3779,7 +3863,7 @@
     }, 
     {
       "op": "null", 
-      "name": "invertedresidual13_batchnorm1_beta", 
+      "name": "stage4_0_expandedconv0_dwise_batchnorm0_beta", 
       "attrs": {
         "__dtype__": "0", 
         "__init__": "zeros", 
@@ -3791,7 +3875,7 @@
     }, 
     {
       "op": "null", 
-      "name": "invertedresidual13_batchnorm1_running_mean", 
+      "name": "stage4_0_expandedconv0_dwise_batchnorm0_running_mean", 
       "attrs": {
         "__dtype__": "0", 
         "__init__": "zeros", 
@@ -3803,7 +3887,7 @@
     }, 
     {
       "op": "null", 
-      "name": "invertedresidual13_batchnorm1_running_var", 
+      "name": "stage4_0_expandedconv0_dwise_batchnorm0_running_var", 
       "attrs": {
         "__dtype__": "0", 
         "__init__": "ones", 
@@ -3815,7 +3899,7 @@
     }, 
     {
       "op": "BatchNorm", 
-      "name": "invertedresidual13_batchnorm1_fwd", 
+      "name": "stage4_0_expandedconv0_dwise_batchnorm0_fwd", 
       "attrs": {
         "axis": "1", 
         "eps": "1e-05", 
@@ -3826,25 +3910,28 @@
       "inputs": [[325, 0, 0], [326, 0, 0], [327, 0, 0], [328, 0, 1], [329, 0, 1]]
     }, 
     {
-      "op": "Activation", 
-      "name": "invertedresidual13_relu1_fwd", 
-      "attrs": {"act_type": "relu"}, 
+      "op": "clip", 
+      "name": "stage4_0_expandedconv0_dwise_relu6_fwd", 
+      "attrs": {
+        "a_max": "6", 
+        "a_min": "0"
+      }, 
       "inputs": [[330, 0, 0]]
     }, 
     {
       "op": "null", 
-      "name": "invertedresidual13_conv2_weight", 
+      "name": "stage4_0_expandedconv0_linear_conv0_weight", 
       "attrs": {
         "__dtype__": "0", 
         "__lr_mult__": "1.0", 
-        "__shape__": "(160, 0, 1, 1)", 
+        "__shape__": "(160L, 0L, 1L, 1L)", 
         "__wd_mult__": "1.0"
       }, 
       "inputs": []
     }, 
     {
       "op": "Convolution", 
-      "name": "invertedresidual13_conv2_fwd", 
+      "name": "stage4_0_expandedconv0_linear_conv0_fwd", 
       "attrs": {
         "dilate": "(1, 1)", 
         "kernel": "(1, 1)", 
@@ -3859,7 +3946,7 @@
     }, 
     {
       "op": "null", 
-      "name": "invertedresidual13_batchnorm2_gamma", 
+      "name": "stage4_0_expandedconv0_linear_batchnorm0_gamma", 
       "attrs": {
         "__dtype__": "0", 
         "__init__": "ones", 
@@ -3871,7 +3958,7 @@
     }, 
     {
       "op": "null", 
-      "name": "invertedresidual13_batchnorm2_beta", 
+      "name": "stage4_0_expandedconv0_linear_batchnorm0_beta", 
       "attrs": {
         "__dtype__": "0", 
         "__init__": "zeros", 
@@ -3883,7 +3970,7 @@
     }, 
     {
       "op": "null", 
-      "name": "invertedresidual13_batchnorm2_running_mean", 
+      "name": "stage4_0_expandedconv0_linear_batchnorm0_running_mean", 
       "attrs": {
         "__dtype__": "0", 
         "__init__": "zeros", 
@@ -3895,7 +3982,7 @@
     }, 
     {
       "op": "null", 
-      "name": "invertedresidual13_batchnorm2_running_var", 
+      "name": "stage4_0_expandedconv0_linear_batchnorm0_running_var", 
       "attrs": {
         "__dtype__": "0", 
         "__init__": "ones", 
@@ -3907,7 +3994,7 @@
     }, 
     {
       "op": "BatchNorm", 
-      "name": "invertedresidual13_batchnorm2_fwd", 
+      "name": "stage4_0_expandedconv0_linear_batchnorm0_fwd", 
       "attrs": {
         "axis": "1", 
         "eps": "1e-05", 
@@ -3919,18 +4006,18 @@
     }, 
     {
       "op": "null", 
-      "name": "invertedresidual14_conv0_weight", 
+      "name": "stage4_0_expandedconv1_expand_conv0_weight", 
       "attrs": {
         "__dtype__": "0", 
         "__lr_mult__": "1.0", 
-        "__shape__": "(960, 0, 1, 1)", 
+        "__shape__": "(960L, 0L, 1L, 1L)", 
         "__wd_mult__": "1.0"
       }, 
       "inputs": []
     }, 
     {
       "op": "Convolution", 
-      "name": "invertedresidual14_conv0_fwd", 
+      "name": "stage4_0_expandedconv1_expand_conv0_fwd", 
       "attrs": {
         "dilate": "(1, 1)", 
         "kernel": "(1, 1)", 
@@ -3945,7 +4032,7 @@
     }, 
     {
       "op": "null", 
-      "name": "invertedresidual14_batchnorm0_gamma", 
+      "name": "stage4_0_expandedconv1_expand_batchnorm0_gamma", 
       "attrs": {
         "__dtype__": "0", 
         "__init__": "ones", 
@@ -3957,7 +4044,7 @@
     }, 
     {
       "op": "null", 
-      "name": "invertedresidual14_batchnorm0_beta", 
+      "name": "stage4_0_expandedconv1_expand_batchnorm0_beta", 
       "attrs": {
         "__dtype__": "0", 
         "__init__": "zeros", 
@@ -3969,7 +4056,7 @@
     }, 
     {
       "op": "null", 
-      "name": "invertedresidual14_batchnorm0_running_mean", 
+      "name": "stage4_0_expandedconv1_expand_batchnorm0_running_mean", 
       "attrs": {
         "__dtype__": "0", 
         "__init__": "zeros", 
@@ -3981,7 +4068,7 @@
     }, 
     {
       "op": "null", 
-      "name": "invertedresidual14_batchnorm0_running_var", 
+      "name": "stage4_0_expandedconv1_expand_batchnorm0_running_var", 
       "attrs": {
         "__dtype__": "0", 
         "__init__": "ones", 
@@ -3993,7 +4080,7 @@
     }, 
     {
       "op": "BatchNorm", 
-      "name": "invertedresidual14_batchnorm0_fwd", 
+      "name": "stage4_0_expandedconv1_expand_batchnorm0_fwd", 
       "attrs": {
         "axis": "1", 
         "eps": "1e-05", 
@@ -4004,25 +4091,28 @@
       "inputs": [[340, 0, 0], [341, 0, 0], [342, 0, 0], [343, 0, 1], [344, 0, 1]]
     }, 
     {
-      "op": "Activation", 
-      "name": "invertedresidual14_relu0_fwd", 
-      "attrs": {"act_type": "relu"}, 
+      "op": "clip", 
+      "name": "stage4_0_expandedconv1_expand_relu6_fwd", 
+      "attrs": {
+        "a_max": "6", 
+        "a_min": "0"
+      }, 
       "inputs": [[345, 0, 0]]
     }, 
     {
       "op": "null", 
-      "name": "invertedresidual14_conv1_weight", 
+      "name": "stage4_0_expandedconv1_dwise_conv0_weight", 
       "attrs": {
         "__dtype__": "0", 
         "__lr_mult__": "1.0", 
-        "__shape__": "(960, 0, 3, 3)", 
+        "__shape__": "(960L, 0L, 3L, 3L)", 
         "__wd_mult__": "1.0"
       }, 
       "inputs": []
     }, 
     {
       "op": "Convolution", 
-      "name": "invertedresidual14_conv1_fwd", 
+      "name": "stage4_0_expandedconv1_dwise_conv0_fwd", 
       "attrs": {
         "dilate": "(1, 1)", 
         "kernel": "(3, 3)", 
@@ -4037,7 +4127,7 @@
     }, 
     {
       "op": "null", 
-      "name": "invertedresidual14_batchnorm1_gamma", 
+      "name": "stage4_0_expandedconv1_dwise_batchnorm0_gamma", 
       "attrs": {
         "__dtype__": "0", 
         "__init__": "ones", 
@@ -4049,7 +4139,7 @@
     }, 
     {
       "op": "null", 
-      "name": "invertedresidual14_batchnorm1_beta", 
+      "name": "stage4_0_expandedconv1_dwise_batchnorm0_beta", 
       "attrs": {
         "__dtype__": "0", 
         "__init__": "zeros", 
@@ -4061,7 +4151,7 @@
     }, 
     {
       "op": "null", 
-      "name": "invertedresidual14_batchnorm1_running_mean", 
+      "name": "stage4_0_expandedconv1_dwise_batchnorm0_running_mean", 
       "attrs": {
         "__dtype__": "0", 
         "__init__": "zeros", 
@@ -4073,7 +4163,7 @@
     }, 
     {
       "op": "null", 
-      "name": "invertedresidual14_batchnorm1_running_var", 
+      "name": "stage4_0_expandedconv1_dwise_batchnorm0_running_var", 
       "attrs": {
         "__dtype__": "0", 
         "__init__": "ones", 
@@ -4085,7 +4175,7 @@
     }, 
     {
       "op": "BatchNorm", 
-      "name": "invertedresidual14_batchnorm1_fwd", 
+      "name": "stage4_0_expandedconv1_dwise_batchnorm0_fwd", 
       "attrs": {
         "axis": "1", 
         "eps": "1e-05", 
@@ -4096,25 +4186,28 @@
       "inputs": [[348, 0, 0], [349, 0, 0], [350, 0, 0], [351, 0, 1], [352, 0, 1]]
     }, 
     {
-      "op": "Activation", 
-      "name": "invertedresidual14_relu1_fwd", 
-      "attrs": {"act_type": "relu"}, 
+      "op": "clip", 
+      "name": "stage4_0_expandedconv1_dwise_relu6_fwd", 
+      "attrs": {
+        "a_max": "6", 
+        "a_min": "0"
+      }, 
       "inputs": [[353, 0, 0]]
     }, 
     {
       "op": "null", 
-      "name": "invertedresidual14_conv2_weight", 
+      "name": "stage4_0_expandedconv1_linear_conv0_weight", 
       "attrs": {
         "__dtype__": "0", 
         "__lr_mult__": "1.0", 
-        "__shape__": "(160, 0, 1, 1)", 
+        "__shape__": "(160L, 0L, 1L, 1L)", 
         "__wd_mult__": "1.0"
       }, 
       "inputs": []
     }, 
     {
       "op": "Convolution", 
-      "name": "invertedresidual14_conv2_fwd", 
+      "name": "stage4_0_expandedconv1_linear_conv0_fwd", 
       "attrs": {
         "dilate": "(1, 1)", 
         "kernel": "(1, 1)", 
@@ -4129,7 +4222,7 @@
     }, 
     {
       "op": "null", 
-      "name": "invertedresidual14_batchnorm2_gamma", 
+      "name": "stage4_0_expandedconv1_linear_batchnorm0_gamma", 
       "attrs": {
         "__dtype__": "0", 
         "__init__": "ones", 
@@ -4141,7 +4234,7 @@
     }, 
     {
       "op": "null", 
-      "name": "invertedresidual14_batchnorm2_beta", 
+      "name": "stage4_0_expandedconv1_linear_batchnorm0_beta", 
       "attrs": {
         "__dtype__": "0", 
         "__init__": "zeros", 
@@ -4153,7 +4246,7 @@
     }, 
     {
       "op": "null", 
-      "name": "invertedresidual14_batchnorm2_running_mean", 
+      "name": "stage4_0_expandedconv1_linear_batchnorm0_running_mean", 
       "attrs": {
         "__dtype__": "0", 
         "__init__": "zeros", 
@@ -4165,7 +4258,7 @@
     }, 
     {
       "op": "null", 
-      "name": "invertedresidual14_batchnorm2_running_var", 
+      "name": "stage4_0_expandedconv1_linear_batchnorm0_running_var", 
       "attrs": {
         "__dtype__": "0", 
         "__init__": "ones", 
@@ -4177,7 +4270,7 @@
     }, 
     {
       "op": "BatchNorm", 
-      "name": "invertedresidual14_batchnorm2_fwd", 
+      "name": "stage4_0_expandedconv1_linear_batchnorm0_fwd", 
       "attrs": {
         "axis": "1", 
         "eps": "1e-05", 
@@ -4189,23 +4282,23 @@
     }, 
     {
       "op": "elemwise_add", 
-      "name": "invertedresidual14_elemwise_add0", 
+      "name": "stage4_0_expandedconv1_elemwise_add0", 
       "inputs": [[361, 0, 0], [338, 0, 0]]
     }, 
     {
       "op": "null", 
-      "name": "invertedresidual15_conv0_weight", 
+      "name": "stage4_0_expandedconv2_expand_conv0_weight", 
       "attrs": {
         "__dtype__": "0", 
         "__lr_mult__": "1.0", 
-        "__shape__": "(960, 0, 1, 1)", 
+        "__shape__": "(960L, 0L, 1L, 1L)", 
         "__wd_mult__": "1.0"
       }, 
       "inputs": []
     }, 
     {
       "op": "Convolution", 
-      "name": "invertedresidual15_conv0_fwd", 
+      "name": "stage4_0_expandedconv2_expand_conv0_fwd", 
       "attrs": {
         "dilate": "(1, 1)", 
         "kernel": "(1, 1)", 
@@ -4220,7 +4313,7 @@
     }, 
     {
       "op": "null", 
-      "name": "invertedresidual15_batchnorm0_gamma", 
+      "name": "stage4_0_expandedconv2_expand_batchnorm0_gamma", 
       "attrs": {
         "__dtype__": "0", 
         "__init__": "ones", 
@@ -4232,7 +4325,7 @@
     }, 
     {
       "op": "null", 
-      "name": "invertedresidual15_batchnorm0_beta", 
+      "name": "stage4_0_expandedconv2_expand_batchnorm0_beta", 
       "attrs": {
         "__dtype__": "0", 
         "__init__": "zeros", 
@@ -4244,7 +4337,7 @@
     }, 
     {
       "op": "null", 
-      "name": "invertedresidual15_batchnorm0_running_mean", 
+      "name": "stage4_0_expandedconv2_expand_batchnorm0_running_mean", 
       "attrs": {
         "__dtype__": "0", 
         "__init__": "zeros", 
@@ -4256,7 +4349,7 @@
     }, 
     {
       "op": "null", 
-      "name": "invertedresidual15_batchnorm0_running_var", 
+      "name": "stage4_0_expandedconv2_expand_batchnorm0_running_var", 
       "attrs": {
         "__dtype__": "0", 
         "__init__": "ones", 
@@ -4268,7 +4361,7 @@
     }, 
     {
       "op": "BatchNorm", 
-      "name": "invertedresidual15_batchnorm0_fwd", 
+      "name": "stage4_0_expandedconv2_expand_batchnorm0_fwd", 
       "attrs": {
         "axis": "1", 
         "eps": "1e-05", 
@@ -4279,25 +4372,28 @@
       "inputs": [[364, 0, 0], [365, 0, 0], [366, 0, 0], [367, 0, 1], [368, 0, 1]]
     }, 
     {
-      "op": "Activation", 
-      "name": "invertedresidual15_relu0_fwd", 
-      "attrs": {"act_type": "relu"}, 
+      "op": "clip", 
+      "name": "stage4_0_expandedconv2_expand_relu6_fwd", 
+      "attrs": {
+        "a_max": "6", 
+        "a_min": "0"
+      }, 
       "inputs": [[369, 0, 0]]
     }, 
     {
       "op": "null", 
-      "name": "invertedresidual15_conv1_weight", 
+      "name": "stage4_0_expandedconv2_dwise_conv0_weight", 
       "attrs": {
         "__dtype__": "0", 
         "__lr_mult__": "1.0", 
-        "__shape__": "(960, 0, 3, 3)", 
+        "__shape__": "(960L, 0L, 3L, 3L)", 
         "__wd_mult__": "1.0"
       }, 
       "inputs": []
     }, 
     {
       "op": "Convolution", 
-      "name": "invertedresidual15_conv1_fwd", 
+      "name": "stage4_0_expandedconv2_dwise_conv0_fwd", 
       "attrs": {
         "dilate": "(1, 1)", 
         "kernel": "(3, 3)", 
@@ -4312,7 +4408,7 @@
     }, 
     {
       "op": "null", 
-      "name": "invertedresidual15_batchnorm1_gamma", 
+      "name": "stage4_0_expandedconv2_dwise_batchnorm0_gamma", 
       "attrs": {
         "__dtype__": "0", 
         "__init__": "ones", 
@@ -4324,7 +4420,7 @@
     }, 
     {
       "op": "null", 
-      "name": "invertedresidual15_batchnorm1_beta", 
+      "name": "stage4_0_expandedconv2_dwise_batchnorm0_beta", 
       "attrs": {
         "__dtype__": "0", 
         "__init__": "zeros", 
@@ -4336,7 +4432,7 @@
     }, 
     {
       "op": "null", 
-      "name": "invertedresidual15_batchnorm1_running_mean", 
+      "name": "stage4_0_expandedconv2_dwise_batchnorm0_running_mean", 
       "attrs": {
         "__dtype__": "0", 
         "__init__": "zeros", 
@@ -4348,7 +4444,7 @@
     }, 
     {
       "op": "null", 
-      "name": "invertedresidual15_batchnorm1_running_var", 
+      "name": "stage4_0_expandedconv2_dwise_batchnorm0_running_var", 
       "attrs": {
         "__dtype__": "0", 
         "__init__": "ones", 
@@ -4360,7 +4456,7 @@
     }, 
     {
       "op": "BatchNorm", 
-      "name": "invertedresidual15_batchnorm1_fwd", 
+      "name": "stage4_0_expandedconv2_dwise_batchnorm0_fwd", 
       "attrs": {
         "axis": "1", 
         "eps": "1e-05", 
@@ -4371,25 +4467,28 @@
       "inputs": [[372, 0, 0], [373, 0, 0], [374, 0, 0], [375, 0, 1], [376, 0, 1]]
     }, 
     {
-      "op": "Activation", 
-      "name": "invertedresidual15_relu1_fwd", 
-      "attrs": {"act_type": "relu"}, 
+      "op": "clip", 
+      "name": "stage4_0_expandedconv2_dwise_relu6_fwd", 
+      "attrs": {
+        "a_max": "6", 
+        "a_min": "0"
+      }, 
       "inputs": [[377, 0, 0]]
     }, 
     {
       "op": "null", 
-      "name": "invertedresidual15_conv2_weight", 
+      "name": "stage4_0_expandedconv2_linear_conv0_weight", 
       "attrs": {
         "__dtype__": "0", 
         "__lr_mult__": "1.0", 
-        "__shape__": "(160, 0, 1, 1)", 
+        "__shape__": "(160L, 0L, 1L, 1L)", 
         "__wd_mult__": "1.0"
       }, 
       "inputs": []
     }, 
     {
       "op": "Convolution", 
-      "name": "invertedresidual15_conv2_fwd", 
+      "name": "stage4_0_expandedconv2_linear_conv0_fwd", 
       "attrs": {
         "dilate": "(1, 1)", 
         "kernel": "(1, 1)", 
@@ -4404,7 +4503,7 @@
     }, 
     {
       "op": "null", 
-      "name": "invertedresidual15_batchnorm2_gamma", 
+      "name": "stage4_0_expandedconv2_linear_batchnorm0_gamma", 
       "attrs": {
         "__dtype__": "0", 
         "__init__": "ones", 
@@ -4416,7 +4515,7 @@
     }, 
     {
       "op": "null", 
-      "name": "invertedresidual15_batchnorm2_beta", 
+      "name": "stage4_0_expandedconv2_linear_batchnorm0_beta", 
       "attrs": {
         "__dtype__": "0", 
         "__init__": "zeros", 
@@ -4428,7 +4527,7 @@
     }, 
     {
       "op": "null", 
-      "name": "invertedresidual15_batchnorm2_running_mean", 
+      "name": "stage4_0_expandedconv2_linear_batchnorm0_running_mean", 
       "attrs": {
         "__dtype__": "0", 
         "__init__": "zeros", 
@@ -4440,7 +4539,7 @@
     }, 
     {
       "op": "null", 
-      "name": "invertedresidual15_batchnorm2_running_var", 
+      "name": "stage4_0_expandedconv2_linear_batchnorm0_running_var", 
       "attrs": {
         "__dtype__": "0", 
         "__init__": "ones", 
@@ -4452,7 +4551,7 @@
     }, 
     {
       "op": "BatchNorm", 
-      "name": "invertedresidual15_batchnorm2_fwd", 
+      "name": "stage4_0_expandedconv2_linear_batchnorm0_fwd", 
       "attrs": {
         "axis": "1", 
         "eps": "1e-05", 
@@ -4464,23 +4563,23 @@
     }, 
     {
       "op": "elemwise_add", 
-      "name": "invertedresidual15_elemwise_add0", 
+      "name": "stage4_0_expandedconv2_elemwise_add0", 
       "inputs": [[385, 0, 0], [362, 0, 0]]
     }, 
     {
       "op": "null", 
-      "name": "invertedresidual16_conv0_weight", 
+      "name": "stage4_1_expandedconv0_expand_conv0_weight", 
       "attrs": {
         "__dtype__": "0", 
         "__lr_mult__": "1.0", 
-        "__shape__": "(960, 0, 1, 1)", 
+        "__shape__": "(960L, 0L, 1L, 1L)", 
         "__wd_mult__": "1.0"
       }, 
       "inputs": []
     }, 
     {
       "op": "Convolution", 
-      "name": "invertedresidual16_conv0_fwd", 
+      "name": "stage4_1_expandedconv0_expand_conv0_fwd", 
       "attrs": {
         "dilate": "(1, 1)", 
         "kernel": "(1, 1)", 
@@ -4495,7 +4594,7 @@
     }, 
     {
       "op": "null", 
-      "name": "invertedresidual16_batchnorm0_gamma", 
+      "name": "stage4_1_expandedconv0_expand_batchnorm0_gamma", 
       "attrs": {
         "__dtype__": "0", 
         "__init__": "ones", 
@@ -4507,7 +4606,7 @@
     }, 
     {
       "op": "null", 
-      "name": "invertedresidual16_batchnorm0_beta", 
+      "name": "stage4_1_expandedconv0_expand_batchnorm0_beta", 
       "attrs": {
         "__dtype__": "0", 
         "__init__": "zeros", 
@@ -4519,7 +4618,7 @@
     }, 
     {
       "op": "null", 
-      "name": "invertedresidual16_batchnorm0_running_mean", 
+      "name": "stage4_1_expandedconv0_expand_batchnorm0_running_mean", 
       "attrs": {
         "__dtype__": "0", 
         "__init__": "zeros", 
@@ -4531,7 +4630,7 @@
     }, 
     {
       "op": "null", 
-      "name": "invertedresidual16_batchnorm0_running_var", 
+      "name": "stage4_1_expandedconv0_expand_batchnorm0_running_var", 
       "attrs": {
         "__dtype__": "0", 
         "__init__": "ones", 
@@ -4543,7 +4642,7 @@
     }, 
     {
       "op": "BatchNorm", 
-      "name": "invertedresidual16_batchnorm0_fwd", 
+      "name": "stage4_1_expandedconv0_expand_batchnorm0_fwd", 
       "attrs": {
         "axis": "1", 
         "eps": "1e-05", 
@@ -4554,25 +4653,28 @@
       "inputs": [[388, 0, 0], [389, 0, 0], [390, 0, 0], [391, 0, 1], [392, 0, 1]]
     }, 
     {
-      "op": "Activation", 
-      "name": "invertedresidual16_relu0_fwd", 
-      "attrs": {"act_type": "relu"}, 
+      "op": "clip", 
+      "name": "stage4_1_expandedconv0_expand_relu6_fwd", 
+      "attrs": {
+        "a_max": "6", 
+        "a_min": "0"
+      }, 
       "inputs": [[393, 0, 0]]
     }, 
     {
       "op": "null", 
-      "name": "invertedresidual16_conv1_weight", 
+      "name": "stage4_1_expandedconv0_dwise_conv0_weight", 
       "attrs": {
         "__dtype__": "0", 
         "__lr_mult__": "1.0", 
-        "__shape__": "(960, 0, 3, 3)", 
+        "__shape__": "(960L, 0L, 3L, 3L)", 
         "__wd_mult__": "1.0"
       }, 
       "inputs": []
     }, 
     {
       "op": "Convolution", 
-      "name": "invertedresidual16_conv1_fwd", 
+      "name": "stage4_1_expandedconv0_dwise_conv0_fwd", 
       "attrs": {
         "dilate": "(1, 1)", 
         "kernel": "(3, 3)", 
@@ -4587,7 +4689,7 @@
     }, 
     {
       "op": "null", 
-      "name": "invertedresidual16_batchnorm1_gamma", 
+      "name": "stage4_1_expandedconv0_dwise_batchnorm0_gamma", 
       "attrs": {
         "__dtype__": "0", 
         "__init__": "ones", 
@@ -4599,7 +4701,7 @@
     }, 
     {
       "op": "null", 
-      "name": "invertedresidual16_batchnorm1_beta", 
+      "name": "stage4_1_expandedconv0_dwise_batchnorm0_beta", 
       "attrs": {
         "__dtype__": "0", 
         "__init__": "zeros", 
@@ -4611,7 +4713,7 @@
     }, 
     {
       "op": "null", 
-      "name": "invertedresidual16_batchnorm1_running_mean", 
+      "name": "stage4_1_expandedconv0_dwise_batchnorm0_running_mean", 
       "attrs": {
         "__dtype__": "0", 
         "__init__": "zeros", 
@@ -4623,7 +4725,7 @@
     }, 
     {
       "op": "null", 
-      "name": "invertedresidual16_batchnorm1_running_var", 
+      "name": "stage4_1_expandedconv0_dwise_batchnorm0_running_var", 
       "attrs": {
         "__dtype__": "0", 
         "__init__": "ones", 
@@ -4635,7 +4737,7 @@
     }, 
     {
       "op": "BatchNorm", 
-      "name": "invertedresidual16_batchnorm1_fwd", 
+      "name": "stage4_1_expandedconv0_dwise_batchnorm0_fwd", 
       "attrs": {
         "axis": "1", 
         "eps": "1e-05", 
@@ -4646,25 +4748,28 @@
       "inputs": [[396, 0, 0], [397, 0, 0], [398, 0, 0], [399, 0, 1], [400, 0, 1]]
     }, 
     {
-      "op": "Activation", 
-      "name": "invertedresidual16_relu1_fwd", 
-      "attrs": {"act_type": "relu"}, 
+      "op": "clip", 
+      "name": "stage4_1_expandedconv0_dwise_relu6_fwd", 
+      "attrs": {
+        "a_max": "6", 
+        "a_min": "0"
+      }, 
       "inputs": [[401, 0, 0]]
     }, 
     {
       "op": "null", 
-      "name": "invertedresidual16_conv2_weight", 
+      "name": "stage4_1_expandedconv0_linear_conv0_weight", 
       "attrs": {
         "__dtype__": "0", 
         "__lr_mult__": "1.0", 
-        "__shape__": "(320, 0, 1, 1)", 
+        "__shape__": "(320L, 0L, 1L, 1L)", 
         "__wd_mult__": "1.0"
       }, 
       "inputs": []
     }, 
     {
       "op": "Convolution", 
-      "name": "invertedresidual16_conv2_fwd", 
+      "name": "stage4_1_expandedconv0_linear_conv0_fwd", 
       "attrs": {
         "dilate": "(1, 1)", 
         "kernel": "(1, 1)", 
@@ -4679,7 +4784,7 @@
     }, 
     {
       "op": "null", 
-      "name": "invertedresidual16_batchnorm2_gamma", 
+      "name": "stage4_1_expandedconv0_linear_batchnorm0_gamma", 
       "attrs": {
         "__dtype__": "0", 
         "__init__": "ones", 
@@ -4691,7 +4796,7 @@
     }, 
     {
       "op": "null", 
-      "name": "invertedresidual16_batchnorm2_beta", 
+      "name": "stage4_1_expandedconv0_linear_batchnorm0_beta", 
       "attrs": {
         "__dtype__": "0", 
         "__init__": "zeros", 
@@ -4703,7 +4808,7 @@
     }, 
     {
       "op": "null", 
-      "name": "invertedresidual16_batchnorm2_running_mean", 
+      "name": "stage4_1_expandedconv0_linear_batchnorm0_running_mean", 
       "attrs": {
         "__dtype__": "0", 
         "__init__": "zeros", 
@@ -4715,7 +4820,7 @@
     }, 
     {
       "op": "null", 
-      "name": "invertedresidual16_batchnorm2_running_var", 
+      "name": "stage4_1_expandedconv0_linear_batchnorm0_running_var", 
       "attrs": {
         "__dtype__": "0", 
         "__init__": "ones", 
@@ -4727,7 +4832,7 @@
     }, 
     {
       "op": "BatchNorm", 
-      "name": "invertedresidual16_batchnorm2_fwd", 
+      "name": "stage4_1_expandedconv0_linear_batchnorm0_fwd", 
       "attrs": {
         "axis": "1", 
         "eps": "1e-05", 
@@ -4739,18 +4844,18 @@
     }, 
     {
       "op": "null", 
-      "name": "conv1_weight", 
+      "name": "stage4_2_conv0_weight", 
       "attrs": {
         "__dtype__": "0", 
         "__lr_mult__": "1.0", 
-        "__shape__": "(1280, 0, 1, 1)", 
+        "__shape__": "(1280L, 0L, 1L, 1L)", 
         "__wd_mult__": "1.0"
       }, 
       "inputs": []
     }, 
     {
       "op": "Convolution", 
-      "name": "conv1_fwd", 
+      "name": "stage4_2_conv0_fwd", 
       "attrs": {
         "dilate": "(1, 1)", 
         "kernel": "(1, 1)", 
@@ -4765,7 +4870,7 @@
     }, 
     {
       "op": "null", 
-      "name": "batchnorm1_gamma", 
+      "name": "stage4_2_batchnorm0_gamma", 
       "attrs": {
         "__dtype__": "0", 
         "__init__": "ones", 
@@ -4777,7 +4882,7 @@
     }, 
     {
       "op": "null", 
-      "name": "batchnorm1_beta", 
+      "name": "stage4_2_batchnorm0_beta", 
       "attrs": {
         "__dtype__": "0", 
         "__init__": "zeros", 
@@ -4789,7 +4894,7 @@
     }, 
     {
       "op": "null", 
-      "name": "batchnorm1_running_mean", 
+      "name": "stage4_2_batchnorm0_running_mean", 
       "attrs": {
         "__dtype__": "0", 
         "__init__": "zeros", 
@@ -4801,7 +4906,7 @@
     }, 
     {
       "op": "null", 
-      "name": "batchnorm1_running_var", 
+      "name": "stage4_2_batchnorm0_running_var", 
       "attrs": {
         "__dtype__": "0", 
         "__init__": "ones", 
@@ -4813,7 +4918,7 @@
     }, 
     {
       "op": "BatchNorm", 
-      "name": "batchnorm1_fwd", 
+      "name": "stage4_2_batchnorm0_fwd", 
       "attrs": {
         "axis": "1", 
         "eps": "1e-05", 
@@ -4824,14 +4929,17 @@
       "inputs": [[411, 0, 0], [412, 0, 0], [413, 0, 0], [414, 0, 1], [415, 0, 1]]
     }, 
     {
-      "op": "Activation", 
-      "name": "relu1_fwd", 
-      "attrs": {"act_type": "relu"}, 
+      "op": "clip", 
+      "name": "stage4_2_relu6_fwd", 
+      "attrs": {
+        "a_max": "6", 
+        "a_min": "0"
+      }, 
       "inputs": [[416, 0, 0]]
     }, 
     {
       "op": "Pooling", 
-      "name": "pool0_fwd", 
+      "name": "pool1_fwd", 
       "attrs": {
         "global_pool": "True", 
         "kernel": "(1, 1)", 
@@ -4844,13 +4952,13 @@
     }, 
     {
       "op": "Reshape", 
-      "name": "flatten0_reshape0", 
+      "name": "flatten1_reshape0", 
       "attrs": {"shape": "(0, -1)"}, 
       "inputs": [[418, 0, 0]]
     }, 
     {
       "op": "null", 
-      "name": "dense0_weight", 
+      "name": "dense1_weight", 
       "attrs": {
         "__dtype__": "0", 
         "__lr_mult__": "1.0", 
@@ -4861,7 +4969,7 @@
     }, 
     {
       "op": "null", 
-      "name": "dense0_bias", 
+      "name": "dense1_bias", 
       "attrs": {
         "__dtype__": "0", 
         "__init__": "zeros", 
@@ -4873,7 +4981,7 @@
     }, 
     {
       "op": "FullyConnected", 
-      "name": "dense0_fwd", 
+      "name": "dense1_fwd", 
       "attrs": {
         "flatten": "True", 
         "no_bias": "False", 
