@@ -10,10 +10,11 @@ The top-1/5 accuracy rates by using single center crop (crop size: 224x224, imag
 
 Network|Top-1|Top-5|
 :---:|:---:|:---:|
-MobileNet v2| **72.45**| 90.78
+MobileNet v2| 71.72 | 90.13
 
 ### Training Script
 For training, please refer to [liangfu/mxnet-mobilenet-v2](https://github.com/liangfu/mxnet-mobilenet-v2). Our pretrained model is converted from that.
+The MXNet officially offer a pretrained model (and training script) [here](https://github.com/apache/incubator-mxnet/blob/master/docs/api/python/gluon/model_zoo.md) too.
 
 ### Normalization
 
